@@ -20,8 +20,15 @@ These steps were done on a Ubuntu 22.04 LTS system:
    ```
    docker load -i xrd-control-plane-container-x64.dockerv1.tgz-7.11.1.48I
    ```
+
 # Deploy
 Deploy the lab with the following command:
 ```
-containerlab deploy -t clab-test-performance-measurement-xrd.yml
-``````
+sudo containerlab deploy -t clab-test-performance-measurement-xrd.yml
+```
+
+# Destroy
+Destroy the lab with the following command:
+```
+sudo containerlab destroy -t clab-test-performance-measurement-xrd.yml
+```

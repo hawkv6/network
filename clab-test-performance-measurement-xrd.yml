@@ -21,7 +21,7 @@ name: test-performance-measurement-xrd
 
 mgmt:
   network: mgt_net
-  ipv4_subnet: 172.20.1.0/24
+  ipv4-subnet: 172.20.1.0/24
 
 topology:
   nodes:
@@ -29,39 +29,39 @@ topology:
     xrd1:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1.48I
-      mgmt_ipv4: 172.20.1.11
+      mgmt-ipv4: 172.20.1.11
       startup-config: config/xrd1.cfg
 
     xrd2:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1.48I
-      mgmt_ipv4: 172.20.1.12
+      mgmt-ipv4: 172.20.1.12
       startup-config: config/xrd2.cfg
 
     xrd3:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1.48I
-      mgmt_ipv4: 172.20.1.13
+      mgmt-ipv4: 172.20.1.13
       startup-config: config/xrd3.cfg
 
     collector:
       kind: linux
       image: ubuntu:latest
-      mgmt_ipv4: 172.20.1.20
+      mgmt-ipv4: 172.20.1.20
       binds:
         - config/collector-netplan.yml:/etc/netplan/collector-netplan.yml
 
     host-a:
       kind: linux
       image: ubuntu:latest
-      mgmt_ipv4: 172.20.1.21
+      mgmt-ipv4: 172.20.1.21
       binds:
         - config/host-a-netplan.yml:/etc/netplan/host-a-netplan.yml
 
     host-b:
       kind: linux
       image: ubuntu:latest
-      mgmt_ipv4: 172.20.1.22
+      mgmt-ipv4: 172.20.1.22
       binds:
         - config/host-b-netplan.yml:/etc/netplan/host-b-netplan.yml
 
@@ -69,8 +69,8 @@ topology:
   links:
     - endpoints: ["xrd1:Gi0-0-0-0", "xrd2:Gi0-0-0-0"]
     - endpoints: ["xrd1:Gi0-0-0-1", "xrd3:Gi0-0-0-0"]
-    - endpoints: ["xrd2:Gi0-0-0-1", "xrd3:Gi0-0-0-1"]
     - endpoints: ["xrd1:Gi0-0-0-2", "host-a:eth1"]
-    - endpoints: ["xrd2:Gi0-0-0-2", "host-b:eth1"]
     - endpoints: ["xrd1:Gi0-0-0-3", "collector:eth1"]
+    - endpoints: ["xrd2:Gi0-0-0-1", "xrd3:Gi0-0-0-1"]
+    - endpoints: ["xrd2:Gi0-0-0-2", "host-b:eth1"]
     - endpoints: ["xrd2:Gi0-0-0-3", "collector:eth2"]
