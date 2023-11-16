@@ -48,22 +48,23 @@ topology:
       kind: linux
       image: ubuntu:latest
       mgmt-ipv4: 172.20.1.20
-      binds:
-        - config/collector-netplan.yml:/etc/netplan/collector-netplan.yml
+      exec:
+        - ip -6 address add 2001:db8:1f::2/127 dev eth1
+        - ip -6 address add 2001:db8:2f::2/127 dev eth2
 
     host-a:
       kind: linux
       image: ubuntu:latest
       mgmt-ipv4: 172.20.1.21
-      binds:
-        - config/host-a-netplan.yml:/etc/netplan/host-a-netplan.yml
+      exec:
+        - ip -6 address add 2001:db8:1a::2/127 dev eth1
 
     host-b:
       kind: linux
       image: ubuntu:latest
       mgmt-ipv4: 172.20.1.22
-      binds:
-        - config/host-b-netplan.yml:/etc/netplan/host-b-netplan.yml
+      exec:
+        - ip -6 address add 2001:db8:2b::2/127 dev eth1
 
 
   links:
