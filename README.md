@@ -1,9 +1,10 @@
 # Requirements
-The following are needed to run the network:
+The following things are needed to run the network:
 - docker
 - containerlab
 
-Follow these instructions to install it. These steps were done on a Ubuntu 22.04 LTS system:
+Follow these instructions to install the requirements.
+These steps were done on a Ubuntu 22.04 LTS system:
 1. [Install and configure docker](https://docs.docker.com/engine/install/ubuntu/)
 2. Install containerlab:
     ```
