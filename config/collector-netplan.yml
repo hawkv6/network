@@ -1,0 +1,9 @@
+network:
+  ethernets:
+    eth1:
+      addresses:
+        - 2001:db8:1f::2/127
+    eth2:
+      addresses:
+        - 2001:db8:2f::2/127
+  version: 2
