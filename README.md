@@ -53,7 +53,15 @@ docker exec -it clab-test-performance-measurement-xrd-xrd1 /pkg/bin/xr_cli.sh
 ```
 
 ### Remote capture
-Containerlab has excellent documentation about [using remote capture](https://containerlab.dev/manual/wireshark/).
+Containerlab has excellent documentation about [using (remote) capture](https://containerlab.dev/manual/wireshark/).
+
+You can either use the standard option:
+```
+ssh user@containerlab-host "sudo ip netns exec clab-test-performance-measurement-xrd-xrd1 tcpdump -U -nni Gi0-0-0-0 -w -" | wireshark -k -i -
+```
+or read further about `clabshark`
+
+#### clabshark 
 
 To capture remote traffic, I wrote the following little bash function:
 ```
@@ -81,5 +89,5 @@ Don't forget to reload your `.bashrc` with the command `source .bashrc`.
 After activating it, you can use it easily.
 Here is an example of sniffing on xrd1 GigabitEthernet0/0/0/0:
 ```
-ssh user@containerlab-host "sudo ip netns exec clab-test-performance-measurement-xrd-xrd1 tcpdump -U -nni Gi0-0-0-0 -w -" | wireshark -k -i -
+clabshark user@clab-server clab-test-performance-measurement-xrd-xrd1 Gi0-0-0-0
 ```
