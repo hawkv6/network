@@ -33,7 +33,7 @@ These steps were done on a Ubuntu 22.04 LTS system:
 ### Build the container for the XRv9k VM image
 1. Clone vrnetlab:
 ```
-git clone git@github.com:vrnetlab/vrnetlab.git
+git clone https://github.com/hellt/vrnetlab
 ```
 2. Copy the XRv9k qcow2 image to the `vrnetlab/xrv9k` folder
 3. Create the XRv9k docker image
