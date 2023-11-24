@@ -45,11 +45,14 @@ make docker-image
 docker images
 ```
 
+More infos can be found under: https://containerlab.dev/manual/kinds/vr-xrv9k/
+
 ### Deploy
 Deploy the lab with the following command:
 ```
 sudo containerlab deploy -t clab-test-performance-measurement-xrv9k.yml
 ```
+Attention: it can take up to half an hour until the XRv9k nodes are started.
 
 ### Destroy
 Destroy the lab with the following command:
@@ -60,7 +63,7 @@ sudo containerlab destroy -t clab-test-performance-measurement-xrv9k.yml
 ### Connect to host
 ```
 docker exec -it clab-test-performance-measurement-xrv9k-host-a bash
-docker exec -it clab-test-performance-measurement-xrv9k-XR-1 /pkg/bin/xr_cli.sh
+ssh clab@<mgmt_ip>
 ```
 
 ### Remote capture
@@ -68,7 +71,7 @@ Containerlab has excellent documentation about [using (remote) capture](https://
 
 You can either use the standard option:
 ```
-ssh user@containerlab-host "sudo ip netns exec clab-test-performance-measurement-xrv9k-XR-1 tcpdump -U -nni Gi0-0-0-0 -w -" | wireshark -k -i -
+ssh user@containerlab-host "sudo ip netns exec clab-test-performance-measurement-xrv9k-XR-1 tcpdump -U -nni eth0 -w -" | wireshark -k -i -
 ```
 or read further about `clabshark`
 
@@ -100,5 +103,5 @@ Don't forget to reload your `.bashrc` with the command `source .bashrc`.
 After activating it, you can use it easily.
 Here is an example of sniffing on xrd1 GigabitEthernet0/0/0/0:
 ```
-clabshark user@clab-server clab-test-performance-measurement-xrv9k-XR-1 Gi0-0-0-0
+clabshark user@clab-server clab-test-performance-measurement-xrv9k-XR-1 eth0
 ```
