@@ -6,13 +6,13 @@
 #                                     │                            │
 #                                     │G0/0/0/3            G0/0/0/3│
 #    ┌────────────┐     G0/0/0/2┌─────┴──────┐      G0/0/0/0┌──────┴─────┐G0/0/0/2    ┌────────────┐
-#    │   host-a   ├─────────────┤    xr1     ├──────────────┤     xr2    ├────────────┤   host-b   │
+#    │   host-a   ├─────────────┤    XR-1    ├──────────────┤     XR-2   ├────────────┤   host-b   │
 #    └────────────┘eth1         └─────┬──────┘G0/0/0/0      └──────┬─────┘        eth1└────────────┘
 #                                     │G0/0/0/1            G0/0/0/1│                        
 #                                     │                            │
 #                                     │                            │
 #                                     │       ┌────────────┐       │
-#                                     └───────┤    xr3     ├───────┘
+#                                     └───────┤    XR-3    ├───────┘
 #                                     G0/0/0/0└────────────┘G0/0/0/1
 
 
@@ -26,23 +26,23 @@ mgmt:
 topology:
   nodes:
 
-    xrd1:
-      kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+    XR-1:
+      kind: cisco_xrv9k
+      image: vrnetlab/vr-xrv9k:7.10.1 
       mgmt-ipv4: 172.20.1.11
-      startup-config: config/xrd1.cfg
+      startup-config: config/XR-1.cfg
 
-    xrd2:
-      kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+    XR-2:
+      kind: cisco_xrv9k
+      image: vrnetlab/vr-xrv9k:7.10.1 
       mgmt-ipv4: 172.20.1.12
-      startup-config: config/xrd2.cfg
+      startup-config: config/XR-2.cfg
 
-    xrd3:
-      kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+    XR-3:
+      kind: cisco_xrv9k
+      image: vrnetlab/vr-xrv9k:7.10.1 
       mgmt-ipv4: 172.20.1.13
-      startup-config: config/xrd3.cfg
+      startup-config: config/XR-3.cfg
 
     collector:
       kind: linux
@@ -68,10 +68,10 @@ topology:
 
 
   links:
-    - endpoints: ["xrd1:Gi0-0-0-0", "xrd2:Gi0-0-0-0"]
-    - endpoints: ["xrd1:Gi0-0-0-1", "xrd3:Gi0-0-0-0"]
-    - endpoints: ["xrd1:Gi0-0-0-2", "host-a:eth1"]
-    - endpoints: ["xrd1:Gi0-0-0-3", "collector:eth1"]
-    - endpoints: ["xrd2:Gi0-0-0-1", "xrd3:Gi0-0-0-1"]
-    - endpoints: ["xrd2:Gi0-0-0-2", "host-b:eth1"]
-    - endpoints: ["xrd2:Gi0-0-0-3", "collector:eth2"]
+    - endpoints: ["XR-1:eth1", "XR-2:eth1"]
+    - endpoints: ["XR-1:eth2", "XR-3:eth1"]
+    - endpoints: ["XR-1:eth3", "host-a:eth1"]
+    - endpoints: ["XR-1:eth4", "collector:eth1"]
+    - endpoints: ["XR-2:eth2", "XR-3:eth2"]
+    - endpoints: ["XR-2:eth3", "host-b:eth1"]
+    - endpoints: ["XR-2:eth4", "collector:eth2"]

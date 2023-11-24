@@ -1,8 +1,8 @@
 ### Overview
-This lab uses containerlab to run 3 XRd control-plane devices and two docker [network-ninja container](https://github.com/INSRapperswil/network-ninja). It was used to test performance-measurement config on XRd control-plane nodes.
+This lab uses containerlab to run 3 XRv9k devices and two docker [network-ninja container](https://github.com/INSRapperswil/network-ninja). It was used to test performance-measurement config on XRd control-plane nodes.
 
 The lab was tested with the following things:
-- XRd control-plane version 7.11.1.48I 
+- XRv9k version 7.10.1
 - containerlab 0.48.1
 - Docker 0.48.1
 - Docker Compose version v2.3.3
@@ -29,27 +29,38 @@ These steps were done on a Ubuntu 22.04 LTS system:
    echo 'fs.inotify.max_user_instances=64000' | sudo tee -a /etc/sysctl.conf
    sysctl -p
    ```
-5. Load the XRd image into docker:
-   ```
-   docker load -i xrd-control-plane-container-x64.dockerv1.tgz-7.11.1.48I
-   ```
+
+### Build the container for the XRv9k VM image
+1. Clone vrnetlab:
+```
+git clone git@github.com:vrnetlab/vrnetlab.git
+```
+2. Copy the XRv9k qcow2 image to the `vrnetlab/xrv9k` folder
+3. Create the XRv9k docker image
+```
+make docker-image
+```
+4. Verify the docker image
+```
+docker images
+```
 
 ### Deploy
 Deploy the lab with the following command:
 ```
-sudo containerlab deploy -t clab-test-performance-measurement-xrd.yml
+sudo containerlab deploy -t clab-test-performance-measurement-xrv9k.yml
 ```
 
 ### Destroy
 Destroy the lab with the following command:
 ```
-sudo containerlab destroy -t clab-test-performance-measurement-xrd.yml
+sudo containerlab destroy -t clab-test-performance-measurement-xrv9k.yml
 ```
 
 ### Connect to host
 ```
-docker exec -it clab-test-performance-measurement-xrd-host-a bash
-docker exec -it clab-test-performance-measurement-xrd-xrd1 /pkg/bin/xr_cli.sh
+docker exec -it clab-test-performance-measurement-xrv9k-host-a bash
+docker exec -it clab-test-performance-measurement-xrv9k-XR-1 /pkg/bin/xr_cli.sh
 ```
 
 ### Remote capture
@@ -57,7 +68,7 @@ Containerlab has excellent documentation about [using (remote) capture](https://
 
 You can either use the standard option:
 ```
-ssh user@containerlab-host "sudo ip netns exec clab-test-performance-measurement-xrd-xrd1 tcpdump -U -nni Gi0-0-0-0 -w -" | wireshark -k -i -
+ssh user@containerlab-host "sudo ip netns exec clab-test-performance-measurement-xrv9k-XR-1 tcpdump -U -nni Gi0-0-0-0 -w -" | wireshark -k -i -
 ```
 or read further about `clabshark`
 
@@ -89,5 +100,5 @@ Don't forget to reload your `.bashrc` with the command `source .bashrc`.
 After activating it, you can use it easily.
 Here is an example of sniffing on xrd1 GigabitEthernet0/0/0/0:
 ```
-clabshark user@clab-server clab-test-performance-measurement-xrd-xrd1 Gi0-0-0-0
+clabshark user@clab-server clab-test-performance-measurement-xrv9k-XR-1 Gi0-0-0-0
 ```
