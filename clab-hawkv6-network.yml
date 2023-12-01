@@ -108,6 +108,7 @@ topology:
         - ip -6 route add 2001:db8::/32 via 2001:db8:a::a dev eth1 metric 1
       binds:
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
+        - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
 
     HOST-B:
       kind: linux
@@ -119,6 +120,7 @@ topology:
         - ip -6 route add 2001:db8::/32 via 2001:db8:b::b dev eth1 metric 1
       binds:
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
+        - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
 
     HOST-C:
       kind: linux
@@ -130,6 +132,7 @@ topology:
         - ip -6 route add 2001:db8::/32 via 2001:db8:c::c dev eth1 metric 1
       binds:
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
+        - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
 
     DNS:
       kind: linux
