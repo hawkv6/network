@@ -1,0 +1,165 @@
+# This is the lab definition file for the hawkv6 network.
+# More information: https://github.com/hawkv6/network
+# Managemet addresses:
+# - XR-1: 172.20.1.11
+# - XR-2: 172.20.1.12
+# - XR-3: 172.20.1.13
+# - XR-4: 172.20.1.14
+# - XR-5: 172.20.1.15
+# - XR-6: 172.20.1.16
+# - XR-7: 172.20.1.17
+# - XR-8: 172.20.1.18
+# - SITE-A: 172.20.1.20
+# - SITE-B: 172.20.1.21
+# - SITE-C: 172.20.1.22
+# - HOST-A: 172.20.1.30
+# - HOST-B: 172.20.1.31
+# - HOST-C: 172.20.1.32
+# - DNS: 172.20.1.40
+# - HAWK-EYE: 172.20.1.41
+
+name: hawkv6
+
+mgmt:
+  network: mgt_net
+  ipv4-subnet: 172.20.1.0/24
+
+topology:
+  nodes:
+
+    XR-1:
+      kind: cisco_xrd
+      image: ios-xr/xrd-control-plane:7.11.1.48I
+      mgmt-ipv4: 172.20.1.11
+      startup-config: config/XR-1.cfg
+
+    XR-2:
+      kind: cisco_xrd
+      image: ios-xr/xrd-control-plane:7.11.1.48I
+      mgmt-ipv4: 172.20.1.12
+      startup-config: config/XR-2.cfg
+
+    XR-3:
+      kind: cisco_xrd
+      image: ios-xr/xrd-control-plane:7.11.1.48I
+      mgmt-ipv4: 172.20.1.13
+      startup-config: config/XR-3.cfg
+
+    XR-4:
+      kind: cisco_xrd
+      image: ios-xr/xrd-control-plane:7.11.1.48I
+      mgmt-ipv4: 172.20.1.14
+      startup-config: config/XR-4.cfg
+
+    XR-5:
+      kind: cisco_xrd
+      image: ios-xr/xrd-control-plane:7.11.1.48I
+      mgmt-ipv4: 172.20.1.15
+      startup-config: config/XR-5.cfg
+    
+    XR-6:
+      kind: cisco_xrd
+      image: ios-xr/xrd-control-plane:7.11.1.48I
+      mgmt-ipv4: 172.20.1.16
+      startup-config: config/XR-6.cfg
+
+    XR-7:
+      kind: cisco_xrd
+      image: ios-xr/xrd-control-plane:7.11.1.48I
+      mgmt-ipv4: 172.20.1.17
+      startup-config: config/XR-7.cfg
+    
+
+    XR-8:
+      kind: cisco_xrd
+      image: ios-xr/xrd-control-plane:7.11.1.48I
+      mgmt-ipv4: 172.20.1.18
+      startup-config: config/XR-8.cfg
+
+    SITE-A:
+      kind: cisco_xrd
+      image: ios-xr/xrd-control-plane:7.11.1.48I
+      mgmt-ipv4: 172.20.1.20
+      startup-config: config/SITE-A.cfg
+
+    SITE-B:
+      kind: cisco_xrd
+      image: ios-xr/xrd-control-plane:7.11.1.48I
+      mgmt-ipv4: 172.20.1.21
+      startup-config: config/SITE-B.cfg
+
+    SITE-C:
+      kind: cisco_xrd
+      image: ios-xr/xrd-control-plane:7.11.1.48I
+      mgmt-ipv4: 172.20.1.22
+      startup-config: config/SITE-C.cfg
+
+    HOST-A:
+      kind: linux
+      image: ghcr.io/insrapperswil/network-ninja:1.0
+      mgmt-ipv4: 172.20.1.30
+      exec:
+        - ip -6 address add 2001:db8:a::10/64 dev eth1
+        - ip -6 route add fc00::/32 via 2001:cafe:a::a dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:cafe:a::a dev eth1 metric 1
+
+    HOST-B:
+      kind: linux
+      image: ghcr.io/insrapperswil/network-ninja:1.0
+      mgmt-ipv4: 172.20.1.31
+      exec:
+        - ip -6 address add 2001:db8:b::10/64 dev eth1
+        - ip -6 route add fc00::/32 via 2001:cafe:b::b dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:cafe:b::b dev eth1 metric 1
+
+    HOST-C:
+      kind: linux
+      image: ghcr.io/insrapperswil/network-ninja:1.0
+      mgmt-ipv4: 172.20.1.32
+      exec:
+        - ip -6 address add 2001:db8:c::10/64 dev eth1
+        - ip -6 route add fc00::/32 via 2001:cafe:c::c dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:cafe:c::c dev eth1 metric 1
+
+    DNS:
+      kind: linux
+      image: ghcr.io/insrapperswil/network-ninja:1.0
+      mgmt-ipv4: 172.20.1.40
+      exec:
+        - ip -6 address add 2001:db8:d4::d/64 dev eth1
+        - ip -6 route add fc00::/32 via 2001:cafe:d4::4 dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:cafe:d4::4 dev eth1 metric 1
+
+    HAWK-EYE:
+      kind: linux
+      image: ghcr.io/insrapperswil/network-ninja:1.0
+      mgmt-ipv4: 172.20.1.41
+      exec:
+        - ip -6 address add 2001:db8:e5::d/64 dev eth1
+        - ip -6 route add fc00::/32 via 2001:cafe:e5::5 dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:cafe:e5::5 dev eth1 metric 1
+
+  links:
+    - endpoints: ["HOST-A:eth1", "SITE-A:Gi0-0-0-1"]
+    - endpoints: ["SITE-A:Gi0-0-0-0", "XR-1:Gi0-0-0-0"]
+    - endpoints: ["XR-1:Gi0-0-0-1", "XR-2:Gi0-0-0-0"]
+    - endpoints: ["XR-1:Gi0-0-0-2", "XR-3:Gi0-0-0-0"]
+    - endpoints: ["XR-2:Gi0-0-0-1", "XR-6:Gi0-0-0-0"]
+    - endpoints: ["XR-2:Gi0-0-0-2", "XR-6:Gi0-0-0-4"]
+    - endpoints: ["XR-2:Gi0-0-0-3", "XR-3:Gi0-0-0-1"]
+    - endpoints: ["XR-3:Gi0-0-0-2", "XR-4:Gi0-0-0-1"]
+    - endpoints: ["XR-3:Gi0-0-0-3", "XR-7:Gi0-0-0-0"]
+    - endpoints: ["XR-4:Gi0-0-0-2", "XR-5:Gi0-0-0-0"]
+    - endpoints: ["XR-4:Gi0-0-0-3", "DNS:eth1"]
+    - endpoints: ["XR-5:Gi0-0-0-1", "XR-6:Gi0-0-0-1"]
+    - endpoints: ["XR-5:Gi0-0-0-2", "XR-7:Gi0-0-0-1"]
+    - endpoints: ["XR-5:Gi0-0-0-3", "HAWK-EYE:eth1"]
+    - endpoints: ["XR-6:Gi0-0-0-2", "XR-7:Gi0-0-0-2"]
+    - endpoints: ["XR-6:Gi0-0-0-3", "XR-8:Gi0-0-0-0"]
+    - endpoints: ["XR-6:Gi0-0-0-4", "SITE-B:Gi0-0-0-2"]
+    - endpoints: ["XR-7:Gi0-0-0-3", "XR-8:Gi0-0-0-1"]
+    - endpoints: ["XR-7:Gi0-0-0-4", "SITE-C:Gi0-0-0-2"]
+    - endpoints: ["XR-8:Gi0-0-0-2", "SITE-B:Gi0-0-0-0"]
+    - endpoints: ["XR-8:Gi0-0-0-3", "SITE-C:Gi0-0-0-0"]
+    - endpoints: ["SITE-B:Gi0-0-0-1", "HOST-B:eth1"]
+    - endpoints: ["SITE-C:Gi0-0-0-1", "HOST-C:eth1"]
