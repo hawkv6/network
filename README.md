@@ -48,8 +48,8 @@ sudo containerlab destroy -t clab-hawkv6-network.yml
 
 ### Connect to host
 ```
-docker exec -it hawkv9-HOST-A bash
-docker exec -it hawkv9-XR-1/pkg/bin/xr_cli.sh
+docker exec -it clab-hawkv6-HOST-A bash
+docker exec -it clab-hawkv6-XR-1 /pkg/bin/xr_cli.sh
 ```
 
 ### Remote capture
@@ -89,5 +89,5 @@ Don't forget to reload your `.bashrc` with the command `source .bashrc`.
 After activating it, you can use it easily.
 Here is an example of sniffing on XR-1 GigabitEthernet0/0/0/0:
 ```
-clabshark user@clab-server hawkv9-XR-1 Gi0-0-0-0
+clabshark user@clab-server clab-hawkv6-XR-1 Gi0-0-0-0
 ```
