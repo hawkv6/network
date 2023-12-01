@@ -1,22 +1,26 @@
 # This is the lab definition file for the hawkv6 network.
 # More information: https://github.com/hawkv6/network
-# Managemet addresses:
-# - XR-1: 172.20.1.11
-# - XR-2: 172.20.1.12
-# - XR-3: 172.20.1.13
-# - XR-4: 172.20.1.14
-# - XR-5: 172.20.1.15
-# - XR-6: 172.20.1.16
-# - XR-7: 172.20.1.17
-# - XR-8: 172.20.1.18
-# - SITE-A: 172.20.1.20
-# - SITE-B: 172.20.1.21
-# - SITE-C: 172.20.1.22
-# - HOST-A: 172.20.1.30
-# - HOST-B: 172.20.1.31
-# - HOST-C: 172.20.1.32
-# - DNS: 172.20.1.40
-# - HAWK-EYE: 172.20.1.41
+
+#+----------------------+-----------------------------------------+-----------+----------------+
+#|         Name         |                  Image                  |   Kind    |  IPv4 Address  |
+#+----------------------+-----------------------------------------+-----------+----------------+
+#| clab-hawkv6-DNS      | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | 172.20.1.40/24 |
+#| clab-hawkv6-HAWK-EYE | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | 172.20.1.41/24 |
+#| clab-hawkv6-HOST-A   | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | 172.20.1.30/24 |
+#| clab-hawkv6-HOST-B   | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | 172.20.1.31/24 |
+#| clab-hawkv6-HOST-C   | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | 172.20.1.32/24 |
+#| clab-hawkv6-SITE-A   | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.20/24 |
+#| clab-hawkv6-SITE-B   | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.21/24 |
+#| clab-hawkv6-SITE-C   | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.22/24 |
+#| clab-hawkv6-XR-1     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.11/24 |
+#| clab-hawkv6-XR-2     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.12/24 |
+#| clab-hawkv6-XR-3     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.13/24 |
+#| clab-hawkv6-XR-4     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.14/24 |
+#| clab-hawkv6-XR-5     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.15/24 |
+#| clab-hawkv6-XR-6     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.16/24 |
+#| clab-hawkv6-XR-7     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.17/24 |
+#| clab-hawkv6-XR-8     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.18/24 |
+#+----------------------+-----------------------------------------+-----------+----------------+
 
 name: hawkv6
 
@@ -100,8 +104,8 @@ topology:
       mgmt-ipv4: 172.20.1.30
       exec:
         - ip -6 address add 2001:db8:a::10/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:cafe:a::a dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:cafe:a::a dev eth1 metric 1
+        - ip -6 route add fc00::/32 via 2001:db8:a::a dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:db8:a::a dev eth1 metric 1
 
     HOST-B:
       kind: linux
@@ -109,8 +113,8 @@ topology:
       mgmt-ipv4: 172.20.1.31
       exec:
         - ip -6 address add 2001:db8:b::10/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:cafe:b::b dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:cafe:b::b dev eth1 metric 1
+        - ip -6 route add fc00::/32 via 2001:db8:b::b dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:db8:b::b dev eth1 metric 1
 
     HOST-C:
       kind: linux
@@ -118,8 +122,8 @@ topology:
       mgmt-ipv4: 172.20.1.32
       exec:
         - ip -6 address add 2001:db8:c::10/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:cafe:c::c dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:cafe:c::c dev eth1 metric 1
+        - ip -6 route add fc00::/32 via 2001:db8:c::c dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:db8:c::c dev eth1 metric 1
 
     DNS:
       kind: linux
@@ -127,8 +131,8 @@ topology:
       mgmt-ipv4: 172.20.1.40
       exec:
         - ip -6 address add 2001:db8:d4::d/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:cafe:d4::4 dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:cafe:d4::4 dev eth1 metric 1
+        - ip -6 route add fc00::/32 via 2001:db8:d4::4 dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:db8:d4::4 dev eth1 metric 1
 
     HAWK-EYE:
       kind: linux
@@ -136,8 +140,8 @@ topology:
       mgmt-ipv4: 172.20.1.41
       exec:
         - ip -6 address add 2001:db8:e5::d/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:cafe:e5::5 dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:cafe:e5::5 dev eth1 metric 1
+        - ip -6 route add fc00::/32 via 2001:db8:e5::5 dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:db8:e5::5 dev eth1 metric 1
 
   links:
     - endpoints: ["HOST-A:eth1", "SITE-A:Gi0-0-0-1"]
