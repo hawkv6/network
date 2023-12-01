@@ -106,7 +106,6 @@ topology:
         - ip -6 address add 2001:db8:a::10/64 dev eth1
         - ip -6 route add fc00::/32 via 2001:db8:a::a dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:a::a dev eth1 metric 1
-        - mount -t bpf bpf /sys/fs/bpf
       binds:
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
         - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
@@ -119,7 +118,6 @@ topology:
         - ip -6 address add 2001:db8:b::10/64 dev eth1
         - ip -6 route add fc00::/32 via 2001:db8:b::b dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:b::b dev eth1 metric 1
-        - mount -t bpf bpf /sys/fs/bpf
       binds:
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
         - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
@@ -132,7 +130,6 @@ topology:
         - ip -6 address add 2001:db8:c::10/64 dev eth1
         - ip -6 route add fc00::/32 via 2001:db8:c::c dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:c::c dev eth1 metric 1
-        - mount -t bpf bpf /sys/fs/bpf
       binds:
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
         - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
