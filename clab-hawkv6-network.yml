@@ -145,7 +145,7 @@ topology:
     - endpoints: ["XR-1:Gi0-0-0-1", "XR-2:Gi0-0-0-0"]
     - endpoints: ["XR-1:Gi0-0-0-2", "XR-3:Gi0-0-0-0"]
     - endpoints: ["XR-2:Gi0-0-0-1", "XR-6:Gi0-0-0-0"]
-    - endpoints: ["XR-2:Gi0-0-0-2", "XR-6:Gi0-0-0-4"]
+    - endpoints: ["XR-2:Gi0-0-0-2", "XR-4:Gi0-0-0-0"]
     - endpoints: ["XR-2:Gi0-0-0-3", "XR-3:Gi0-0-0-1"]
     - endpoints: ["XR-3:Gi0-0-0-2", "XR-4:Gi0-0-0-1"]
     - endpoints: ["XR-3:Gi0-0-0-3", "XR-7:Gi0-0-0-0"]
