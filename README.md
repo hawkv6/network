@@ -100,5 +100,5 @@ Don't forget to reload your `.bashrc` with the command `source .bashrc`.
 After activating it, you can use it easily.
 Here is an example of sniffing on xrd1 GigabitEthernet0/0/0/0:
 ```
-clabshark user@clab-server clab-test-performance-measurement-xrv9k-XR-1 Gi0-0-0-0
+clabshark user@clab-server clab-test-performance-measurement-xrv9k-XR-1 eth1
 ```
