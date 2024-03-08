@@ -29,7 +29,11 @@ These steps were done on a Ubuntu 22.04 LTS system:
    echo 'fs.inotify.max_user_instances=64000' | sudo tee -a /etc/sysctl.conf
    sudo sysctl -p
    ```
-5. Load the XRd image into docker:
+5. Extract tarball:
+   ```
+   tar -xvzf xrd-control-plane-container-x86.7.11.1.48I.tgz
+   ```
+6. Load the XRd image into docker :
    ```
    docker load -i xrd-control-plane-container-x64.dockerv1.tgz-7.11.1.48I
    ```
