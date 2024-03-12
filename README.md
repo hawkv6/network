@@ -2,7 +2,7 @@
 This lab uses containerlab to spin up the hawkv6 test network containing XRd control-plane devices and docker [network-ninja container](https://github.com/INSRapperswil/network-ninja).
 
 The lab was tested with the following things:
-- XRd control-plane version 7.11.1.48I 
+- XRd control-plane version 7.11.1 
 - containerlab 0.48.6
 - Docker 24.0.7
 - Docker Compose version v2.11.1
@@ -31,11 +31,11 @@ These steps were done on a Ubuntu 22.04 LTS system:
    ```
 5. Extract tarball:
    ```
-   tar -xvzf xrd-control-plane-container-x86.7.11.1.48I.tgz
+   tar -xvzf xrd-control-plane-container-x86.7.11.1.tgz
    ```
 6. Load the XRd image into docker :
    ```
-   docker load -i xrd-control-plane-container-x64.dockerv1.tgz-7.11.1.48I
+   docker load -i xrd-control-plane-container-x64.dockerv1.tgz-7.11.1
    ```
 
 ### Deploy
