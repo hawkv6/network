@@ -9,17 +9,17 @@
 #| clab-hawkv6-HOST-A   | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | 172.20.1.30/24 |
 #| clab-hawkv6-HOST-B   | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | 172.20.1.31/24 |
 #| clab-hawkv6-HOST-C   | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | 172.20.1.32/24 |
-#| clab-hawkv6-SITE-A   | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.20/24 |
-#| clab-hawkv6-SITE-B   | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.21/24 |
-#| clab-hawkv6-SITE-C   | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.22/24 |
-#| clab-hawkv6-XR-1     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.11/24 |
-#| clab-hawkv6-XR-2     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.12/24 |
-#| clab-hawkv6-XR-3     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.13/24 |
-#| clab-hawkv6-XR-4     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.14/24 |
-#| clab-hawkv6-XR-5     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.15/24 |
-#| clab-hawkv6-XR-6     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.16/24 |
-#| clab-hawkv6-XR-7     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.17/24 |
-#| clab-hawkv6-XR-8     | ios-xr/xrd-control-plane:7.11.1.48I     | cisco_xrd | 172.20.1.18/24 |
+#| clab-hawkv6-SITE-A   | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.20/24 |
+#| clab-hawkv6-SITE-B   | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.21/24 |
+#| clab-hawkv6-SITE-C   | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.22/24 |
+#| clab-hawkv6-XR-1     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.11/24 |
+#| clab-hawkv6-XR-2     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.12/24 |
+#| clab-hawkv6-XR-3     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.13/24 |
+#| clab-hawkv6-XR-4     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.14/24 |
+#| clab-hawkv6-XR-5     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.15/24 |
+#| clab-hawkv6-XR-6     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.16/24 |
+#| clab-hawkv6-XR-7     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.17/24 |
+#| clab-hawkv6-XR-8     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.18/24 |
 #+----------------------+-----------------------------------------+-----------+----------------+
 
 name: hawkv6
@@ -33,68 +33,68 @@ topology:
 
     XR-1:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+      image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.11
       startup-config: config/XR-1.cfg
 
     XR-2:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+      image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.12
       startup-config: config/XR-2.cfg
 
     XR-3:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+      image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.13
       startup-config: config/XR-3.cfg
 
     XR-4:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+      image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.14
       startup-config: config/XR-4.cfg
 
     XR-5:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+      image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.15
       startup-config: config/XR-5.cfg
     
     XR-6:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+      image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.16
       startup-config: config/XR-6.cfg
 
     XR-7:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+      image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.17
       startup-config: config/XR-7.cfg
     
 
     XR-8:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+      image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.18
       startup-config: config/XR-8.cfg
 
     SITE-A:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+      image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.20
       startup-config: config/SITE-A.cfg
 
     SITE-B:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+      image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.21
       startup-config: config/SITE-B.cfg
 
     SITE-C:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.1.48I
+      image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.22
       startup-config: config/SITE-C.cfg
 
@@ -103,6 +103,8 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.30
       exec:
+        - sysctl -w net.ipv6.conf.eth1.autoconf=0
+        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
         - ip -6 address add 2001:db8:a::10/64 dev eth1
         - ip -6 route add fc00::/32 via 2001:db8:a::a dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:a::a dev eth1 metric 1
@@ -115,6 +117,8 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.31
       exec:
+        - sysctl -w net.ipv6.conf.eth1.autoconf=0
+        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
         - ip -6 address add 2001:db8:b::10/64 dev eth1
         - ip -6 route add fc00::/32 via 2001:db8:b::b dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:b::b dev eth1 metric 1
@@ -127,6 +131,8 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.32
       exec:
+        - sysctl -w net.ipv6.conf.eth1.autoconf=0
+        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
         - ip -6 address add 2001:db8:c::10/64 dev eth1
         - ip -6 route add fc00::/32 via 2001:db8:c::c dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:c::c dev eth1 metric 1
@@ -139,6 +145,8 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.40
       exec:
+        - sysctl -w net.ipv6.conf.eth1.autoconf=0
+        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
         - ip -6 address add 2001:db8:d4::d/64 dev eth1
         - ip -6 route add fc00::/32 via 2001:db8:d4::4 dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:d4::4 dev eth1 metric 1
@@ -148,9 +156,13 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.41
       exec:
-        - ip -6 address add 2001:db8:e5::d/64 dev eth1
+        - sysctl -w net.ipv6.conf.eth1.autoconf=0
+        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
+        - ip -6 address add 2001:db8:e5::e/64 dev eth1
         - ip -6 route add fc00::/32 via 2001:db8:e5::5 dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:e5::5 dev eth1 metric 1
+      binds:
+        - /home/ins/hawkv6/hawkeye/bin/hawkeye:/hawkeye
 
   links:
     - endpoints: ["HOST-A:eth1", "SITE-A:Gi0-0-0-1"]
