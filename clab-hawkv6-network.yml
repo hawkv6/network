@@ -36,42 +36,63 @@ topology:
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.11
       startup-config: config/XR-1.cfg
+      labels:
+        graph-level: 3
+        graph-icon: router
 
     XR-2:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.12
       startup-config: config/XR-2.cfg
+      labels:
+        graph-level: 4
+        graph-icon: router
 
     XR-3:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.13
       startup-config: config/XR-3.cfg
+      labels:
+        graph-level: 4
+        graph-icon: router
 
     XR-4:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.14
       startup-config: config/XR-4.cfg
+      labels:
+        graph-level: 5
+        graph-icon: router
 
     XR-5:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.15
       startup-config: config/XR-5.cfg
+      labels:
+        graph-level: 6
+        graph-icon: router
     
     XR-6:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.16
       startup-config: config/XR-6.cfg
+      labels:
+        graph-level: 7
+        graph-icon: router
 
     XR-7:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.17
       startup-config: config/XR-7.cfg
+      labels:
+        graph-level: 7
+        graph-icon: router
     
 
     XR-8:
@@ -79,24 +100,36 @@ topology:
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.18
       startup-config: config/XR-8.cfg
+      labels:
+        graph-level: 8
+        graph-icon: router
 
     SITE-A:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.20
       startup-config: config/SITE-A.cfg
+      labels:
+        graph-level: 2
+        graph-icon: router
 
     SITE-B:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.21
       startup-config: config/SITE-B.cfg
+      labels:
+        graph-level: 9
+        graph-icon: router
 
     SITE-C:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.22
       startup-config: config/SITE-C.cfg
+      labels:
+        graph-level: 9
+        graph-icon: router
 
     HOST-A:
       kind: linux
@@ -111,6 +144,9 @@ topology:
       binds:
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
         - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
+      labels:
+        graph-level: 1
+        graph-icon: host
 
     HOST-B:
       kind: linux
@@ -125,6 +161,9 @@ topology:
       binds:
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
         - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
+      labels:
+        graph-level: 10
+        graph-icon: host
 
     HOST-C:
       kind: linux
@@ -139,6 +178,9 @@ topology:
       binds:
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
         - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
+      labels:
+        graph-level: 10
+        graph-icon: host
 
     DNS:
       kind: linux
