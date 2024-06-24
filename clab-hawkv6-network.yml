@@ -227,6 +227,7 @@ topology:
         - ip -6 route add fc00::/32 via 2001:db8:2f::2 dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:2f::2 dev eth1 metric 1
         - ip -6 route add fc00:0:2f::/48 encap seg6local action End dev eth1
+        - apt install ufw -y
 
     SERA-2:
       kind: linux
@@ -245,6 +246,7 @@ topology:
         - ip -6 route add fc00::/32 via 2001:db8:3f::3 dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:3f::3 dev eth1 metric 1
         - ip -6 route add fc00:0:3f::/48 encap seg6local action End dev eth1
+        - apt install ufw -y
 
     SNORT-1:
       kind: linux
@@ -263,6 +265,9 @@ topology:
         - ip -6 route add fc00::/32 via 2001:db8:6f::6 dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:6f::6 dev eth1 metric 1
         - ip -6 route add fc00:0:6f::/48 encap seg6local action End dev eth1
+        - apt install snort -y
+        - RULE_PATH=/etc/snort/rules
+        - cat "alert tcp any any -> any 80 (msg:"HTTP traffic detected"; sid:1000001; rev:1;)" > $RULE_PATH/local.rules
 
     SNORT-2:
       kind: linux
@@ -281,6 +286,9 @@ topology:
         - ip -6 route add fc00::/32 via 2001:db8:7f::7 dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:7f::7 dev eth1 metric 1
         - ip -6 route add fc00:0:7f::/48 encap seg6local action End dev eth1
+        - apt install snort -y
+        - RULE_PATH=/etc/snort/rules
+        - cat "alert tcp any any -> any 80 (msg:"HTTP traffic detected"; sid:1000001; rev:1;)" > $RULE_PATH/local.rules
   
 
   links:
