@@ -1,26 +1,30 @@
 # This is the lab definition file for the hawkv6 network.
 # More information: https://github.com/hawkv6/network
 
-#+----------------------+-----------------------------------------+-----------+----------------+
-#|         Name         |                  Image                  |   Kind    |  IPv4 Address  |
-#+----------------------+-----------------------------------------+-----------+----------------+
-#| clab-hawkv6-DNS      | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | 172.20.1.40/24 |
-#| clab-hawkv6-HAWK-EYE | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | 172.20.1.41/24 |
-#| clab-hawkv6-HOST-A   | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | 172.20.1.30/24 |
-#| clab-hawkv6-HOST-B   | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | 172.20.1.31/24 |
-#| clab-hawkv6-HOST-C   | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | 172.20.1.32/24 |
-#| clab-hawkv6-SITE-A   | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.20/24 |
-#| clab-hawkv6-SITE-B   | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.21/24 |
-#| clab-hawkv6-SITE-C   | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.22/24 |
-#| clab-hawkv6-XR-1     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.11/24 |
-#| clab-hawkv6-XR-2     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.12/24 |
-#| clab-hawkv6-XR-3     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.13/24 |
-#| clab-hawkv6-XR-4     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.14/24 |
-#| clab-hawkv6-XR-5     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.15/24 |
-#| clab-hawkv6-XR-6     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.16/24 |
-#| clab-hawkv6-XR-7     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.17/24 |
-#| clab-hawkv6-XR-8     | ios-xr/xrd-control-plane:7.11.1     | cisco_xrd | 172.20.1.18/24 |
-#+----------------------+-----------------------------------------+-----------+----------------+
+#+----+----------------------+--------------+-----------------------------------------+-----------+---------+----------------+--------------+
+#| #  |         Name         | Container ID |                  Image                  |   Kind    |  State  |  IPv4 Address  | IPv6 Address |
+#+----+----------------------+--------------+-----------------------------------------+-----------+---------+----------------+--------------+
+#|  1 | clab-hawkv6-DNS      | 1025e571f08d | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.40/24 | N/A          |
+#|  2 | clab-hawkv6-HAWK-EYE | e411d5120e0b | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.41/24 | N/A          |
+#|  3 | clab-hawkv6-HOST-A   | 4990c1001ecf | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.30/24 | N/A          |
+#|  4 | clab-hawkv6-HOST-B   | 658dea763492 | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.31/24 | N/A          |
+#|  5 | clab-hawkv6-HOST-C   | 1cb72f247903 | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.32/24 | N/A          |
+#|  6 | clab-hawkv6-SERA-1   | 13933341f927 | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.42/24 | N/A          |
+#|  7 | clab-hawkv6-SERA-2   | c20d21ca4587 | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.43/24 | N/A          |
+#|  8 | clab-hawkv6-SITE-A   | 7fea5f7c0c4d | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.20/24 | N/A          |
+#|  9 | clab-hawkv6-SITE-B   | 5b5214eb8351 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.21/24 | N/A          |
+#| 10 | clab-hawkv6-SITE-C   | 0300f25a62ae | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.22/24 | N/A          |
+#| 11 | clab-hawkv6-SNORT-1  | cd2f0e4c66c7 | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.44/24 | N/A          |
+#| 12 | clab-hawkv6-SNORT-2  | ec21952f12ec | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.45/24 | N/A          |
+#| 13 | clab-hawkv6-XR-1     | 238e485fa3e8 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.11/24 | N/A          |
+#| 14 | clab-hawkv6-XR-2     | 1fb76607b1c2 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.12/24 | N/A          |
+#| 15 | clab-hawkv6-XR-3     | 1601252e91c2 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.13/24 | N/A          |
+#| 16 | clab-hawkv6-XR-4     | 066fff5cd0ca | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.14/24 | N/A          |
+#| 17 | clab-hawkv6-XR-5     | bce820d017f8 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.15/24 | N/A          |
+#| 18 | clab-hawkv6-XR-6     | 2af9ba1d1e45 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.16/24 | N/A          |
+#| 19 | clab-hawkv6-XR-7     | 6acc175c8527 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.17/24 | N/A          |
+#| 20 | clab-hawkv6-XR-8     | 78a483010f77 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.18/24 | N/A          |
+#+----+----------------------+--------------+-----------------------------------------+-----------+---------+----------------+--------------+
 
 name: hawkv6
 
@@ -206,6 +210,79 @@ topology:
       binds:
         - /home/ins/hawkv6/hawkeye/bin/hawkeye:/hawkeye
 
+    SERA-1:
+      kind: linux
+      image: ghcr.io/insrapperswil/network-ninja:1.0
+      mgmt-ipv4: 172.20.1.42
+      exec:
+        - sysctl -w net.ipv6.conf.eth0.autoconf=0
+        - sysctl -w net.ipv6.conf.eth0.accept_ra=0
+        - sysctl -w net.ipv6.conf.eth1.autoconf=0
+        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
+        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
+        - sysctl -w net.ipv6.conf.all.forwarding=1
+        - sysctl -w net.ipv6.conf.default.forwarding=1
+        - sysctl -w net.ipv6.conf.eth1.seg6_enabled=1
+        - ip -6 address add 2001:db8:2f::f/64 dev eth1
+        - ip -6 route add fc00::/32 via 2001:db8:2f::2 dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:db8:2f::2 dev eth1 metric 1
+        - ip -6 route add fc00:0:2f::/48 encap seg6local action End dev eth1
+
+    SERA-2:
+      kind: linux
+      image: ghcr.io/insrapperswil/network-ninja:1.0
+      mgmt-ipv4: 172.20.1.43
+      exec:
+        - sysctl -w net.ipv6.conf.eth0.autoconf=0
+        - sysctl -w net.ipv6.conf.eth0.accept_ra=0
+        - sysctl -w net.ipv6.conf.eth1.autoconf=0
+        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
+        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
+        - sysctl -w net.ipv6.conf.all.forwarding=1
+        - sysctl -w net.ipv6.conf.default.forwarding=1
+        - sysctl -w net.ipv6.conf.eth1.seg6_enabled=1
+        - ip -6 address add 2001:db8:3f::f/64 dev eth1
+        - ip -6 route add fc00::/32 via 2001:db8:3f::3 dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:db8:3f::3 dev eth1 metric 1
+        - ip -6 route add fc00:0:3f::/48 encap seg6local action End dev eth1
+
+    SNORT-1:
+      kind: linux
+      image: ghcr.io/insrapperswil/network-ninja:1.0
+      mgmt-ipv4: 172.20.1.44
+      exec:
+        - sysctl -w net.ipv6.conf.eth0.autoconf=0
+        - sysctl -w net.ipv6.conf.eth0.accept_ra=0
+        - sysctl -w net.ipv6.conf.eth1.autoconf=0
+        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
+        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
+        - sysctl -w net.ipv6.conf.all.forwarding=1
+        - sysctl -w net.ipv6.conf.default.forwarding=1
+        - sysctl -w net.ipv6.conf.eth1.seg6_enabled=1
+        - ip -6 address add 2001:db8:6f::f/64 dev eth1
+        - ip -6 route add fc00::/32 via 2001:db8:6f::6 dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:db8:6f::6 dev eth1 metric 1
+        - ip -6 route add fc00:0:6f::/48 encap seg6local action End dev eth1
+
+    SNORT-2:
+      kind: linux
+      image: ghcr.io/insrapperswil/network-ninja:1.0
+      mgmt-ipv4: 172.20.1.45
+      exec:
+        - sysctl -w net.ipv6.conf.eth0.autoconf=0
+        - sysctl -w net.ipv6.conf.eth0.accept_ra=0
+        - sysctl -w net.ipv6.conf.eth1.autoconf=0
+        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
+        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
+        - sysctl -w net.ipv6.conf.all.forwarding=1
+        - sysctl -w net.ipv6.conf.default.forwarding=1
+        - sysctl -w net.ipv6.conf.eth1.seg6_enabled=1
+        - ip -6 address add 2001:db8:7f::f/64 dev eth1
+        - ip -6 route add fc00::/32 via 2001:db8:7f::7 dev eth1 metric 1
+        - ip -6 route add 2001:db8::/32 via 2001:db8:7f::7 dev eth1 metric 1
+        - ip -6 route add fc00:0:7f::/48 encap seg6local action End dev eth1
+  
+
   links:
     - endpoints: ["HOST-A:eth1", "SITE-A:Gi0-0-0-1"]
     - endpoints: ["SITE-A:Gi0-0-0-0", "XR-1:Gi0-0-0-0"]
@@ -214,8 +291,10 @@ topology:
     - endpoints: ["XR-2:Gi0-0-0-1", "XR-6:Gi0-0-0-0"]
     - endpoints: ["XR-2:Gi0-0-0-2", "XR-4:Gi0-0-0-0"]
     - endpoints: ["XR-2:Gi0-0-0-3", "XR-3:Gi0-0-0-1"]
+    - endpoints: ["XR-2:Gi0-0-0-4", "SERA-1:eth1"]
     - endpoints: ["XR-3:Gi0-0-0-2", "XR-4:Gi0-0-0-1"]
     - endpoints: ["XR-3:Gi0-0-0-3", "XR-7:Gi0-0-0-0"]
+    - endpoints: ["XR-3:Gi0-0-0-4", "SERA-2:eth1"]
     - endpoints: ["XR-4:Gi0-0-0-2", "XR-5:Gi0-0-0-0"]
     - endpoints: ["XR-4:Gi0-0-0-3", "DNS:eth1"]
     - endpoints: ["XR-5:Gi0-0-0-1", "XR-6:Gi0-0-0-1"]
@@ -224,8 +303,10 @@ topology:
     - endpoints: ["XR-6:Gi0-0-0-2", "XR-7:Gi0-0-0-2"]
     - endpoints: ["XR-6:Gi0-0-0-3", "XR-8:Gi0-0-0-0"]
     - endpoints: ["XR-6:Gi0-0-0-4", "SITE-B:Gi0-0-0-2"]
+    - endpoints: ["XR-6:Gi0-0-0-5", "SNORT-1:eth1"]
     - endpoints: ["XR-7:Gi0-0-0-3", "XR-8:Gi0-0-0-1"]
     - endpoints: ["XR-7:Gi0-0-0-4", "SITE-C:Gi0-0-0-2"]
+    - endpoints: ["XR-7:Gi0-0-0-5", "SNORT-2:eth1"]
     - endpoints: ["XR-8:Gi0-0-0-2", "SITE-B:Gi0-0-0-0"]
     - endpoints: ["XR-8:Gi0-0-0-3", "SITE-C:Gi0-0-0-0"]
     - endpoints: ["SITE-B:Gi0-0-0-1", "HOST-B:eth1"]
