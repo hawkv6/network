@@ -320,10 +320,7 @@ topology:
       mgmt-ipv4: 172.20.1.46
       ports:
       - 8500:8500 
-
-    border0:
-      kind: border0
-  
+ 
   links:
     - endpoints: ["HOST-A:eth1", "SITE-A:Gi0-0-0-1"]
     - endpoints: ["SITE-A:Gi0-0-0-0", "XR-1:Gi0-0-0-0"]
