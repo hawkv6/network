@@ -1,0 +1,9 @@
+{
+    "service": {
+        "name": "ids",
+        "id": "SNORT-1",
+        "Meta": {
+            "sid": "fc00:0:6f::"
+        }
+    }
+}

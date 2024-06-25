@@ -1,0 +1,9 @@
+{
+    "service": {
+        "name": "fw",
+        "id": "SERA-1",
+        "Meta": {
+            "sid": "fc00:0:2f::"
+        }
+    }
+}
