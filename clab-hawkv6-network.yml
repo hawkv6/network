@@ -319,7 +319,8 @@ topology:
       image: hashicorp/consul:1.19
       mgmt-ipv4: 172.20.1.46
       ports:
-      - 8500:8500 
+      - 8500:8500
+      - 8301:8301
  
   links:
     - endpoints: ["HOST-A:eth1", "SITE-A:Gi0-0-0-1"]
