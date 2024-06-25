@@ -231,8 +231,8 @@ topology:
         - apt install ufw gnupg -y
         - wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
         - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
-        - sudo apt update
-        - sudo apt install -y consul
+        - apt update
+        - apt install -y consul
       binds:
         - config/SERA-1/:/etc/consul.d/
 
@@ -257,8 +257,8 @@ topology:
         - apt install ufw gnupg -y
         - wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
         - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
-        - sudo apt update
-        - sudo apt install -y consul
+        - apt update
+        - apt install -y consul
       binds:
         - config/SERA-2/:/etc/consul.d/
 
@@ -283,8 +283,8 @@ topology:
         - apt install snort gnupg -y
         - wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
         - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
-        - sudo apt update
-        - sudo apt install -y consul
+        - apt update
+        - apt install -y consul
       binds:
         - config/SNORT-1/:/etc/consul.d/
 
@@ -309,8 +309,8 @@ topology:
         - apt install snort gnupg -y
         - wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
         - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
-        - sudo apt update
-        - sudo apt install -y consul
+        - apt update
+        - apt install -y consul
       binds:
         - config/SNORT-2/:/etc/consul.d/
 
