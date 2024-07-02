@@ -1,4 +1,4 @@
 data_dir = "/opt/consul"
 node_name = "SERA-1"
-bind_addr = "172.20.1.42"
-retry_join = ["172.20.1.46"]
+bind_addr = "10.8.36.20"
+retry_join = ["10.8.39.70"]

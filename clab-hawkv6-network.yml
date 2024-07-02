@@ -213,7 +213,7 @@ topology:
     SERA-1:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
-      mgmt-ipv4: 172.20.1.42
+      network-mode: host
       exec:
         - sysctl -w net.ipv6.conf.eth0.autoconf=0
         - sysctl -w net.ipv6.conf.eth0.accept_ra=0
@@ -227,11 +227,12 @@ topology:
         - ip -6 route add fc00::/32 via 2001:db8:2f::2 dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:2f::2 dev eth1 metric 1
         - ip -6 route add fc00:0:2f::/48 encap seg6local action End dev eth1
-        - apt update
+        - apt update -y
+        - apt upgrade -y
         - apt install ufw gnupg -y
         - wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
         - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
-        - apt update
+        - apt update -y
         - apt install -y consul
       binds:
         - config/SERA-1/:/etc/consul.d/
@@ -239,7 +240,7 @@ topology:
     SERA-2:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
-      mgmt-ipv4: 172.20.1.43
+      network-mode: host
       exec:
         - sysctl -w net.ipv6.conf.eth0.autoconf=0
         - sysctl -w net.ipv6.conf.eth0.accept_ra=0
@@ -253,11 +254,12 @@ topology:
         - ip -6 route add fc00::/32 via 2001:db8:3f::3 dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:3f::3 dev eth1 metric 1
         - ip -6 route add fc00:0:3f::/48 encap seg6local action End dev eth1
-        - apt update
+        - apt update -y
+        - apt upgrade -y
         - apt install ufw gnupg -y
         - wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
         - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
-        - apt update
+        - apt update -y
         - apt install -y consul
       binds:
         - config/SERA-2/:/etc/consul.d/
@@ -279,11 +281,12 @@ topology:
         - ip -6 route add fc00::/32 via 2001:db8:6f::6 dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:6f::6 dev eth1 metric 1
         - ip -6 route add fc00:0:6f::/48 encap seg6local action End dev eth1
-        - apt update
+        - apt update -y
+        - apt upgrade -y
         - apt install snort gnupg -y
         - wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
         - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
-        - apt update
+        - apt update -y
         - apt install -y consul
       binds:
         - config/SNORT-1/:/etc/consul.d/
@@ -305,22 +308,15 @@ topology:
         - ip -6 route add fc00::/32 via 2001:db8:7f::7 dev eth1 metric 1
         - ip -6 route add 2001:db8::/32 via 2001:db8:7f::7 dev eth1 metric 1
         - ip -6 route add fc00:0:7f::/48 encap seg6local action End dev eth1
-        - apt update
+        - apt update -y
+        - apt upgrade -y
         - apt install snort gnupg -y
         - wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
         - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
-        - apt update
+        - apt update -y
         - apt install -y consul
       binds:
         - config/SNORT-2/:/etc/consul.d/
-
-    consul:
-      kind: linux
-      image: hashicorp/consul:1.19
-      mgmt-ipv4: 172.20.1.46
-      ports:
-      - 8500:8500
-      - 8301:8301
  
   links:
     - endpoints: ["HOST-A:eth1", "SITE-A:Gi0-0-0-1"]
