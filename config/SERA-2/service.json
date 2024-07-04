@@ -4,6 +4,13 @@
         "id": "SERA-2",
         "Meta": {
             "sid": "fc00:0:3f::"
+        },
+        "check": {
+            "id": "ssh",
+            "name": "SSH TCP on port 22",
+            "tcp": "[2001:db8:3f::f]:22",
+            "interval": "2s",
+            "timeout": "1s"
         }
     }
 }
