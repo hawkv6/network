@@ -198,7 +198,7 @@ topology:
 
     SERA-1:
       kind: linux
-      image: ghcr.io/insrapperswil/network-ninja:1.0
+      image:  ghcr.io/hawkv6/network-consul-ninja:latest
       network-mode: host
       exec:
         - bash /mnt/SERA-1.cfg
@@ -208,7 +208,7 @@ topology:
 
     SERA-2:
       kind: linux
-      image: ghcr.io/insrapperswil/network-ninja:1.0
+      image:  ghcr.io/hawkv6/network-consul-ninja:latest
       network-mode: host
       exec:
         - bash /mnt/SERA-2.cfg
@@ -218,7 +218,7 @@ topology:
 
     SNORT-1:
       kind: linux
-      image: ghcr.io/insrapperswil/network-ninja:1.0
+      image:  ghcr.io/hawkv6/network-consul-ninja:latest
       network-mode: host
       exec:
         - bash /mnt/SNORT-1.cfg
@@ -228,7 +228,7 @@ topology:
 
     SNORT-2:
       kind: linux
-      image: ghcr.io/insrapperswil/network-ninja:1.0
+      image:  ghcr.io/hawkv6/network-consul-ninja:latest
       network-mode: host
       exec:
         - bash /mnt/SNORT-2.cfg
