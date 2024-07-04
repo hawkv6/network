@@ -202,7 +202,7 @@ topology:
       network-mode: host
       exec:
         - bash /mnt/SERA-1.cfg
-        - consul agent -config-dir=/mnt/consul.d
+        - consul agent -config-dir=/mnt/
       binds:
         - config/SERA-1/:/mnt/
 
@@ -212,7 +212,7 @@ topology:
       network-mode: host
       exec:
         - bash /mnt/SERA-2.cfg
-        - consul agent -config-dir=/mnt/consul.d
+        - consul agent -config-dir=/mnt/
       binds:
         - config/SERA-2/:/mnt/
 
@@ -222,7 +222,7 @@ topology:
       network-mode: host
       exec:
         - bash /mnt/SNORT-1.cfg
-        - consul agent -config-dir=/mnt/consul.d
+        - consul agent -config-dir=/mnt/
       binds:
         - config/SNORT-1/:/mnt/
 
@@ -232,7 +232,7 @@ topology:
       network-mode: host
       exec:
         - bash /mnt/SNORT-2.cfg
-        - consul agent -config-dir=/mnt/consul.d
+        - consul agent -config-dir=/mnt/
       binds:
         - config/SNORT-2/:/mnt/
  
