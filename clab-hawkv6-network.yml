@@ -140,9 +140,9 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.30
       exec:
-        - bash /tmp/HOST-A.cfg
+        - bash /mnt/HOST-A.cfg
       binds:
-        - config/HOST-A.cfg:/tmp/HOST-A.cfg
+        - config/HOST-A.cfg:/mnt/HOST-A.cfg
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
         - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
       labels:
@@ -154,9 +154,9 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.31
       exec:
-        - bash /tmp/HOST-B.cfg
+        - bash /mnt/HOST-B.cfg
       binds:
-        - config/HOST-B.cfg:/tmp/HOST-B.cfg
+        - config/HOST-B.cfg:/mnt/HOST-B.cfg
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
         - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
       labels:
@@ -168,9 +168,9 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.32
       exec:
-        - bash /tmp/HOST-C.cfg
+        - bash /mnt/HOST-C.cfg
       binds:
-        - config/HOST-C.cfg:/tmp/HOST-C.cfg
+        - config/HOST-C.cfg:/mnt/HOST-C.cfg
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
         - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
       labels:
@@ -182,18 +182,18 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.40
       exec:
-        - bash /tmp/DNS.cfg
+        - bash /mnt/DNS.cfg
       binds:
-        - config/DNS.cfg:/tmp/DNS.cfg
+        - config/DNS.cfg:/mnt/DNS.cfg
 
     HAWK-EYE:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.41
       exec:
-        - bash /tmp/HAWK-EYE.cfg
+        - bash /mnt/HAWK-EYE.cfg
       binds:
-        - config/HAWK-EYE.cfg:/tmp/HAWK-EYE.cfg
+        - config/HAWK-EYE.cfg:/mnt/HAWK-EYE.cfg
         - /home/ins/hawkv6/hawkeye/bin/hawkeye:/hawkeye
 
     SERA-1:
@@ -201,48 +201,40 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       network-mode: host
       exec:
-        - bash /tmp/SERA-1.cfg
-        - consul agent -config-dir=/etc/consul.d
+        - bash /mnt/SERA-1.cfg
+        - consul agent -config-dir=/mnt/consul.d
       binds:
-        - config/SERA-1/SERA-1.cfg:/tmp/SERA-1.cfg 
-        - config/SERA-1/consul.hcl:/etc/consul.d/consul.hcl
-        - config/SERA-1/service.json:/etc/consul.d/service.json
+        - config/SERA-1/:/mnt/
 
     SERA-2:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       network-mode: host
       exec:
-        - bash /tmp/SERA-2.cfg
-        - consul agent -config-dir=/etc/consul.d
+        - bash /mnt/SERA-2.cfg
+        - consul agent -config-dir=/mnt/consul.d
       binds:
-        - config/SERA-2/SERA-2.cfg:/tmp/SERA-2.cfg 
-        - config/SERA-2/consul.hcl:/etc/consul.d/consul.hcl
-        - config/SERA-2/service.json:/etc/consul.d/service.json
+        - config/SERA-2/:/mnt/
 
     SNORT-1:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       network-mode: host
       exec:
-        - bash /tmp/SNORT-1.cfg
-        - consul agent -config-dir=/etc/consul.d
+        - bash /mnt/SNORT-1.cfg
+        - consul agent -config-dir=/mnt/consul.d
       binds:
-        - config/SNORT-1/SNORT-1.cfg:/tmp/SNORT-1.cfg 
-        - config/SNORT-1/consul.hcl:/etc/consul.d/consul.hcl
-        - config/SNORT-1/service.json:/etc/consul.d/service.json
+        - config/SNORT-1/:/mnt/
 
     SNORT-2:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       network-mode: host
       exec:
-        - bash /tmp/SNORT-2.cfg
-        - consul agent -config-dir=/etc/consul.d
+        - bash /mnt/SNORT-2.cfg
+        - consul agent -config-dir=/mnt/consul.d
       binds:
-        - config/SNORT-2/SNORT-2.cfg:/tmp/SNORT-2.cfg 
-        - config/SNORT-2/consul.hcl:/etc/consul.d/consul.hcl
-        - config/SNORT-2/service.json:/etc/consul.d/service.json
+        - config/SNORT-2/:/mnt/
  
   links:
     - endpoints: ["HOST-A:eth1", "SITE-A:Gi0-0-0-1"]
