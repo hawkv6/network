@@ -1,30 +1,30 @@
 # This is the lab definition file for the hawkv6 network.
 # More information: https://github.com/hawkv6/network
 
-#+----+----------------------+--------------+-----------------------------------------+-----------+---------+----------------+--------------+
-#| #  |         Name         | Container ID |                  Image                  |   Kind    |  State  |  IPv4 Address  | IPv6 Address |
-#+----+----------------------+--------------+-----------------------------------------+-----------+---------+----------------+--------------+
-#|  1 | clab-hawkv6-DNS      | 1025e571f08d | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.40/24 | N/A          |
-#|  2 | clab-hawkv6-HAWK-EYE | e411d5120e0b | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.41/24 | N/A          |
-#|  3 | clab-hawkv6-HOST-A   | 4990c1001ecf | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.30/24 | N/A          |
-#|  4 | clab-hawkv6-HOST-B   | 658dea763492 | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.31/24 | N/A          |
-#|  5 | clab-hawkv6-HOST-C   | 1cb72f247903 | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.32/24 | N/A          |
-#|  6 | clab-hawkv6-SERA-1   | 13933341f927 | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.42/24 | N/A          |
-#|  7 | clab-hawkv6-SERA-2   | c20d21ca4587 | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.43/24 | N/A          |
-#|  8 | clab-hawkv6-SITE-A   | 7fea5f7c0c4d | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.20/24 | N/A          |
-#|  9 | clab-hawkv6-SITE-B   | 5b5214eb8351 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.21/24 | N/A          |
-#| 10 | clab-hawkv6-SITE-C   | 0300f25a62ae | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.22/24 | N/A          |
-#| 11 | clab-hawkv6-SNORT-1  | cd2f0e4c66c7 | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.44/24 | N/A          |
-#| 12 | clab-hawkv6-SNORT-2  | ec21952f12ec | ghcr.io/insrapperswil/network-ninja:1.0 | linux     | running | 172.20.1.45/24 | N/A          |
-#| 13 | clab-hawkv6-XR-1     | 238e485fa3e8 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.11/24 | N/A          |
-#| 14 | clab-hawkv6-XR-2     | 1fb76607b1c2 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.12/24 | N/A          |
-#| 15 | clab-hawkv6-XR-3     | 1601252e91c2 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.13/24 | N/A          |
-#| 16 | clab-hawkv6-XR-4     | 066fff5cd0ca | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.14/24 | N/A          |
-#| 17 | clab-hawkv6-XR-5     | bce820d017f8 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.15/24 | N/A          |
-#| 18 | clab-hawkv6-XR-6     | 2af9ba1d1e45 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.16/24 | N/A          |
-#| 19 | clab-hawkv6-XR-7     | 6acc175c8527 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.17/24 | N/A          |
-#| 20 | clab-hawkv6-XR-8     | 78a483010f77 | ios-xr/xrd-control-plane:7.11.1         | cisco_xrd | running | 172.20.1.18/24 | N/A          |
-#+----+----------------------+--------------+-----------------------------------------+-----------+---------+----------------+--------------+
+#+----+----------------------+--------------+--------------------------------------------+-----------+---------+----------------+--------------+
+#| #  |         Name         | Container ID |                   Image                    |   Kind    |  State  |  IPv4 Address  | IPv6 Address |
+#+----+----------------------+--------------+--------------------------------------------+-----------+---------+----------------+--------------+
+#|  1 | clab-hawkv6-DNS      | a815dbc42a9f | ghcr.io/insrapperswil/network-ninja:1.0    | linux     | running | 172.20.1.40/24 | N/A          |
+#|  2 | clab-hawkv6-HAWK-EYE | 4fc5e0823088 | ghcr.io/insrapperswil/network-ninja:1.0    | linux     | running | 172.20.1.41/24 | N/A          |
+#|  3 | clab-hawkv6-HOST-A   | b64d74e680a6 | ghcr.io/insrapperswil/network-ninja:1.0    | linux     | running | 172.20.1.30/24 | N/A          |
+#|  4 | clab-hawkv6-HOST-B   | 6683aa247a03 | ghcr.io/insrapperswil/network-ninja:1.0    | linux     | running | 172.20.1.31/24 | N/A          |
+#|  5 | clab-hawkv6-HOST-C   | fc2905656b54 | ghcr.io/insrapperswil/network-ninja:1.0    | linux     | running | 172.20.1.32/24 | N/A          |
+#|  6 | clab-hawkv6-SERA-1   | b350875c8c14 | ghcr.io/hawkv6/network-consul-ninja:latest | linux     | running | N/A            | N/A          |
+#|  7 | clab-hawkv6-SERA-2   | c9c75982d483 | ghcr.io/hawkv6/network-consul-ninja:latest | linux     | running | N/A            | N/A          |
+#|  8 | clab-hawkv6-SITE-A   | 9b44c4f14570 | ios-xr/xrd-control-plane:7.11.1            | cisco_xrd | running | 172.20.1.20/24 | N/A          |
+#|  9 | clab-hawkv6-SITE-B   | b6f6498fb21d | ios-xr/xrd-control-plane:7.11.1            | cisco_xrd | running | 172.20.1.21/24 | N/A          |
+#| 10 | clab-hawkv6-SITE-C   | 30c127079801 | ios-xr/xrd-control-plane:7.11.1            | cisco_xrd | running | 172.20.1.22/24 | N/A          |
+#| 11 | clab-hawkv6-SNORT-1  | 32ecf8c809a7 | ghcr.io/hawkv6/network-consul-ninja:latest | linux     | running | N/A            | N/A          |
+#| 12 | clab-hawkv6-SNORT-2  | 2fac07c1c1d2 | ghcr.io/hawkv6/network-consul-ninja:latest | linux     | running | N/A            | N/A          |
+#| 13 | clab-hawkv6-XR-1     | 3fc4a5a3086f | ios-xr/xrd-control-plane:7.11.1            | cisco_xrd | running | 172.20.1.11/24 | N/A          |
+#| 14 | clab-hawkv6-XR-2     | 2e380840b37a | ios-xr/xrd-control-plane:7.11.1            | cisco_xrd | running | 172.20.1.12/24 | N/A          |
+#| 15 | clab-hawkv6-XR-3     | c56c982f2053 | ios-xr/xrd-control-plane:7.11.1            | cisco_xrd | running | 172.20.1.13/24 | N/A          |
+#| 16 | clab-hawkv6-XR-4     | 9c1271aa2232 | ios-xr/xrd-control-plane:7.11.1            | cisco_xrd | running | 172.20.1.14/24 | N/A          |
+#| 17 | clab-hawkv6-XR-5     | 5152dc7daa43 | ios-xr/xrd-control-plane:7.11.1            | cisco_xrd | running | 172.20.1.15/24 | N/A          |
+#| 18 | clab-hawkv6-XR-6     | 156c7c334a64 | ios-xr/xrd-control-plane:7.11.1            | cisco_xrd | running | 172.20.1.16/24 | N/A          |
+#| 19 | clab-hawkv6-XR-7     | 141dcbcfe28d | ios-xr/xrd-control-plane:7.11.1            | cisco_xrd | running | 172.20.1.17/24 | N/A          |
+#| 20 | clab-hawkv6-XR-8     | d78343cbc93f | ios-xr/xrd-control-plane:7.11.1            | cisco_xrd | running | 172.20.1.18/24 | N/A          |
+#+----+----------------------+--------------+--------------------------------------------+-----------+---------+----------------+--------------+
 
 name: hawkv6
 
@@ -202,7 +202,6 @@ topology:
       network-mode: host
       exec:
         - bash /mnt/SERA-1.cfg
-        - consul agent -config-dir=/mnt/
       binds:
         - config/SERA-1/:/mnt/
 
@@ -212,7 +211,6 @@ topology:
       network-mode: host
       exec:
         - bash /mnt/SERA-2.cfg
-        - consul agent -config-dir=/mnt/
       binds:
         - config/SERA-2/:/mnt/
 
@@ -222,7 +220,6 @@ topology:
       network-mode: host
       exec:
         - bash /mnt/SNORT-1.cfg
-        - consul agent -config-dir=/mnt/
       binds:
         - config/SNORT-1/:/mnt/
 
@@ -232,7 +229,6 @@ topology:
       network-mode: host
       exec:
         - bash /mnt/SNORT-2.cfg
-        - consul agent -config-dir=/mnt/
       binds:
         - config/SNORT-2/:/mnt/
  
