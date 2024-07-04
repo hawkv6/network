@@ -8,7 +8,7 @@
         "check": {
             "id": "ssh",
             "name": "SSH TCP on port 22",
-            "tcp": "[2001:db8:2f::f]:22",
+            "tcp": "[2001:db8:7f::f]:22",
             "interval": "2s",
             "timeout": "1s"
         }
