@@ -140,12 +140,9 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.30
       exec:
-        - sysctl -w net.ipv6.conf.eth1.autoconf=0
-        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
-        - ip -6 address add 2001:db8:a::10/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:db8:a::a dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:db8:a::a dev eth1 metric 1
+        - bash /tmp/HOST-A.cfg
       binds:
+        - config/HOST-A.cfg:/tmp/HOST-A.cfg
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
         - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
       labels:
@@ -157,12 +154,9 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.31
       exec:
-        - sysctl -w net.ipv6.conf.eth1.autoconf=0
-        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
-        - ip -6 address add 2001:db8:b::10/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:db8:b::b dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:db8:b::b dev eth1 metric 1
+        - bash /tmp/HOST-B.cfg
       binds:
+        - config/HOST-B.cfg:/tmp/HOST-B.cfg
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
         - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
       labels:
@@ -174,12 +168,9 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.32
       exec:
-        - sysctl -w net.ipv6.conf.eth1.autoconf=0
-        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
-        - ip -6 address add 2001:db8:c::10/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:db8:c::c dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:db8:c::c dev eth1 metric 1
+        - bash /tmp/HOST-C.cfg
       binds:
+        - config/HOST-C.cfg:/tmp/HOST-C.cfg
         - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
         - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
       labels:
@@ -191,23 +182,18 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.40
       exec:
-        - sysctl -w net.ipv6.conf.eth1.autoconf=0
-        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
-        - ip -6 address add 2001:db8:d4::d/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:db8:d4::4 dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:db8:d4::4 dev eth1 metric 1
+        - bash /tmp/DNS.cfg
+      binds:
+        - config/DNS.cfg:/tmp/DNS.cfg
 
     HAWK-EYE:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.41
       exec:
-        - sysctl -w net.ipv6.conf.eth1.autoconf=0
-        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
-        - ip -6 address add 2001:db8:e5::e/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:db8:e5::5 dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:db8:e5::5 dev eth1 metric 1
+        - bash /tmp/HAWK-EYE.cfg
       binds:
+        - config/HAWK-EYE.cfg:/tmp/HAWK-EYE.cfg
         - /home/ins/hawkv6/hawkeye/bin/hawkeye:/hawkeye
 
     SERA-1:
@@ -215,108 +201,46 @@ topology:
       image: ghcr.io/insrapperswil/network-ninja:1.0
       network-mode: host
       exec:
-        - sysctl -w net.ipv6.conf.eth0.autoconf=0
-        - sysctl -w net.ipv6.conf.eth0.accept_ra=0
-        - sysctl -w net.ipv6.conf.eth1.autoconf=0
-        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
-        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
-        - sysctl -w net.ipv6.conf.all.forwarding=1
-        - sysctl -w net.ipv6.conf.default.forwarding=1
-        - sysctl -w net.ipv6.conf.eth1.seg6_enabled=1
-        - ip -6 address add 2001:db8:2f::f/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:db8:2f::2 dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:db8:2f::2 dev eth1 metric 1
-        - ip -6 route add fc00:0:2f::/48 encap seg6local action End dev eth1
-        - apt update -y
-        - apt upgrade -y
-        - apt install ufw gnupg -y
-        - wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-        - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
-        - apt update -y
-        - apt install -y consul
+        - bash /tmp/SERA-1.cfg
       binds:
-        - config/SERA-1/:/etc/consul.d/
+        - config/SERA-1/SERA-1.cfg:/tmp/SERA-1.cfg 
+        - config/SERA-1/consul.hcl:/etc/consul.d/consul.hcl
+        - config/SERA-1/service.json:/etc/consul.d/service.json
 
     SERA-2:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       network-mode: host
       exec:
-        - sysctl -w net.ipv6.conf.eth0.autoconf=0
-        - sysctl -w net.ipv6.conf.eth0.accept_ra=0
-        - sysctl -w net.ipv6.conf.eth1.autoconf=0
-        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
-        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
-        - sysctl -w net.ipv6.conf.all.forwarding=1
-        - sysctl -w net.ipv6.conf.default.forwarding=1
-        - sysctl -w net.ipv6.conf.eth1.seg6_enabled=1
-        - ip -6 address add 2001:db8:3f::f/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:db8:3f::3 dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:db8:3f::3 dev eth1 metric 1
-        - ip -6 route add fc00:0:3f::/48 encap seg6local action End dev eth1
-        - apt update -y
-        - apt upgrade -y
-        - apt install ufw gnupg -y
-        - wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-        - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
-        - apt update -y
-        - apt install -y consul
+        - bash /tmp/SERA-2.cfg
       binds:
-        - config/SERA-2/:/etc/consul.d/
+        - config/SERA-2/SERA-2.cfg:/tmp/SERA-2.cfg 
+        - config/SERA-2/consul.hcl:/etc/consul.d/consul.hcl
+        - config/SERA-2/service.json:/etc/consul.d/service.json
 
     SNORT-1:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.44
       exec:
-        - sysctl -w net.ipv6.conf.eth0.autoconf=0
-        - sysctl -w net.ipv6.conf.eth0.accept_ra=0
-        - sysctl -w net.ipv6.conf.eth1.autoconf=0
-        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
-        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
-        - sysctl -w net.ipv6.conf.all.forwarding=1
-        - sysctl -w net.ipv6.conf.default.forwarding=1
-        - sysctl -w net.ipv6.conf.eth1.seg6_enabled=1
-        - ip -6 address add 2001:db8:6f::f/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:db8:6f::6 dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:db8:6f::6 dev eth1 metric 1
-        - ip -6 route add fc00:0:6f::/48 encap seg6local action End dev eth1
-        - apt update -y
-        - apt upgrade -y
-        - apt install snort gnupg -y
-        - wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-        - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
-        - apt update -y
-        - apt install -y consul
+        - bash /tmp/SNORT-1.cfg
       binds:
         - config/SNORT-1/:/etc/consul.d/
+        - config/SNORT-1/SNORT-1.cfg:/tmp/SNORT-1.cfg 
+        - config/SNORT-1/consul.hcl:/etc/consul.d/consul.hcl
+        - config/SNORT-1/service.json:/etc/consul.d/service.json
 
     SNORT-2:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.45
       exec:
-        - sysctl -w net.ipv6.conf.eth0.autoconf=0
-        - sysctl -w net.ipv6.conf.eth0.accept_ra=0
-        - sysctl -w net.ipv6.conf.eth1.autoconf=0
-        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
-        - sysctl -w net.ipv6.conf.eth1.accept_ra=0
-        - sysctl -w net.ipv6.conf.all.forwarding=1
-        - sysctl -w net.ipv6.conf.default.forwarding=1
-        - sysctl -w net.ipv6.conf.eth1.seg6_enabled=1
-        - ip -6 address add 2001:db8:7f::f/64 dev eth1
-        - ip -6 route add fc00::/32 via 2001:db8:7f::7 dev eth1 metric 1
-        - ip -6 route add 2001:db8::/32 via 2001:db8:7f::7 dev eth1 metric 1
-        - ip -6 route add fc00:0:7f::/48 encap seg6local action End dev eth1
-        - apt update -y
-        - apt upgrade -y
-        - apt install snort gnupg -y
-        - wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-        - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
-        - apt update -y
-        - apt install -y consul
+        - bash /tmp/SNORT-2.cfg
       binds:
         - config/SNORT-2/:/etc/consul.d/
+        - config/SNORT-2/SNORT-2.cfg:/tmp/SNORT-2.cfg 
+        - config/SNORT-2/consul.hcl:/etc/consul.d/consul.hcl
+        - config/SNORT-2/service.json:/etc/consul.d/service.json
  
   links:
     - endpoints: ["HOST-A:eth1", "SITE-A:Gi0-0-0-1"]
