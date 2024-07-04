@@ -202,6 +202,7 @@ topology:
       network-mode: host
       exec:
         - bash /tmp/SERA-1.cfg
+        - consul agent -config-dir=/etc/consul.d
       binds:
         - config/SERA-1/SERA-1.cfg:/tmp/SERA-1.cfg 
         - config/SERA-1/consul.hcl:/etc/consul.d/consul.hcl
@@ -213,6 +214,7 @@ topology:
       network-mode: host
       exec:
         - bash /tmp/SERA-2.cfg
+        - consul agent -config-dir=/etc/consul.d
       binds:
         - config/SERA-2/SERA-2.cfg:/tmp/SERA-2.cfg 
         - config/SERA-2/consul.hcl:/etc/consul.d/consul.hcl
@@ -221,11 +223,11 @@ topology:
     SNORT-1:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
-      mgmt-ipv4: 172.20.1.44
+      network-mode: host
       exec:
         - bash /tmp/SNORT-1.cfg
+        - consul agent -config-dir=/etc/consul.d
       binds:
-        - config/SNORT-1/:/etc/consul.d/
         - config/SNORT-1/SNORT-1.cfg:/tmp/SNORT-1.cfg 
         - config/SNORT-1/consul.hcl:/etc/consul.d/consul.hcl
         - config/SNORT-1/service.json:/etc/consul.d/service.json
@@ -233,11 +235,11 @@ topology:
     SNORT-2:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
-      mgmt-ipv4: 172.20.1.45
+      network-mode: host
       exec:
         - bash /tmp/SNORT-2.cfg
+        - consul agent -config-dir=/etc/consul.d
       binds:
-        - config/SNORT-2/:/etc/consul.d/
         - config/SNORT-2/SNORT-2.cfg:/tmp/SNORT-2.cfg 
         - config/SNORT-2/consul.hcl:/etc/consul.d/consul.hcl
         - config/SNORT-2/service.json:/etc/consul.d/service.json
@@ -253,7 +255,7 @@ topology:
     - endpoints: ["XR-2:Gi0-0-0-4", "SERA-1:eth1"]
     - endpoints: ["XR-3:Gi0-0-0-2", "XR-4:Gi0-0-0-1"]
     - endpoints: ["XR-3:Gi0-0-0-3", "XR-7:Gi0-0-0-0"]
-    - endpoints: ["XR-3:Gi0-0-0-4", "SERA-2:eth1"]
+    - endpoints: ["XR-3:Gi0-0-0-4", "SERA-2:eth2"]
     - endpoints: ["XR-4:Gi0-0-0-2", "XR-5:Gi0-0-0-0"]
     - endpoints: ["XR-4:Gi0-0-0-3", "DNS:eth1"]
     - endpoints: ["XR-5:Gi0-0-0-1", "XR-6:Gi0-0-0-1"]
@@ -262,10 +264,10 @@ topology:
     - endpoints: ["XR-6:Gi0-0-0-2", "XR-7:Gi0-0-0-2"]
     - endpoints: ["XR-6:Gi0-0-0-3", "XR-8:Gi0-0-0-0"]
     - endpoints: ["XR-6:Gi0-0-0-4", "SITE-B:Gi0-0-0-2"]
-    - endpoints: ["XR-6:Gi0-0-0-5", "SNORT-1:eth1"]
+    - endpoints: ["XR-6:Gi0-0-0-5", "SNORT-1:eth3"]
     - endpoints: ["XR-7:Gi0-0-0-3", "XR-8:Gi0-0-0-1"]
     - endpoints: ["XR-7:Gi0-0-0-4", "SITE-C:Gi0-0-0-2"]
-    - endpoints: ["XR-7:Gi0-0-0-5", "SNORT-2:eth1"]
+    - endpoints: ["XR-7:Gi0-0-0-5", "SNORT-2:eth4"]
     - endpoints: ["XR-8:Gi0-0-0-2", "SITE-B:Gi0-0-0-0"]
     - endpoints: ["XR-8:Gi0-0-0-3", "SITE-C:Gi0-0-0-0"]
     - endpoints: ["SITE-B:Gi0-0-0-1", "HOST-B:eth1"]
