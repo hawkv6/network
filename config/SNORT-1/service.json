@@ -1,0 +1,16 @@
+{
+    "service": {
+        "name": "ids",
+        "id": "SNORT-1",
+        "Meta": {
+            "sid": "fc00:0:6f::"
+        },
+        "check": {
+            "id": "ssh",
+            "name": "SSH TCP on port 22",
+            "tcp": "[2001:db8:6f::f]:22",
+            "interval": "2s",
+            "timeout": "1s"
+        }
+    }
+}
