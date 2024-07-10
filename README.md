@@ -1,18 +1,37 @@
 ### Overview
-This lab uses containerlab to spin up the hawkv6 test network containing XRd control-plane devices and docker [network-ninja container](https://github.com/INSRapperswil/network-ninja).
+This lab uses containerlab to spin up the hawkv6 test network containing XRd control-plane devices and docker [network-ninja container](https://github.com/INSRapperswil/network-ninja) and [network-consul-ninja container](https://github.com/hawkv6/network-consul-ninja/pkgs/container/network-consul-ninja).
+![hawkv6 network topology](images/hawkv6-network.png)
 
-The lab was tested with the following things:
-- XRd control-plane version 7.11.1 
-- containerlab 0.48.6
-- Docker 24.0.7
-- Docker Compose version v2.11.1
 
+### Deploy
+Deploy the lab with the following command:
+```
+sudo containerlab deploy -t clab-hawkv6-network.yml
+```
+
+### Destroy
+Destroy the lab with the following command:
+```
+sudo containerlab destroy -t clab-hawkv6-network.yml
+```
+
+### Connect to host
+```
+docker exec -it clab-hawkv6-HOST-A bash
+docker exec -it clab-hawkv6-XR-1 /pkg/bin/xr_cli.sh
+```
 
 ### Requirements
 The following things are needed to run the network:
 - docker
 - docker-compose
 - containerlab
+
+The lab was tested with the following versions:
+- XRd control-plane version 7.11.1 
+- containerlab 0.48.6
+- Docker 24.0.7
+- Docker Compose version v2.11.1
 
 Follow these instructions to install the requirements.
 These steps were done on a Ubuntu 22.04 LTS system:
@@ -38,23 +57,6 @@ These steps were done on a Ubuntu 22.04 LTS system:
    docker load -i xrd-control-plane-container-x64.dockerv1.tgz-7.11.1
    ```
 
-### Deploy
-Deploy the lab with the following command:
-```
-sudo containerlab deploy -t clab-hawkv6-network.yml
-```
-
-### Destroy
-Destroy the lab with the following command:
-```
-sudo containerlab destroy -t clab-hawkv6-network.yml
-```
-
-### Connect to host
-```
-docker exec -it clab-hawkv6-HOST-A bash
-docker exec -it clab-hawkv6-XR-1 /pkg/bin/xr_cli.sh
-```
 
 ### Remote capture
 Containerlab has excellent documentation about [using (remote) capture](https://containerlab.dev/manual/wireshark/).

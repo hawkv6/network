@@ -143,8 +143,8 @@ topology:
         - bash /mnt/HOST-A.cfg
       binds:
         - config/HOST-A.cfg:/mnt/HOST-A.cfg
-        - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
-        - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
+        - ../hawkwing/hawkwing:/hawkwing
+        - ../hawkwing/config.yaml:/config.yaml
       labels:
         graph-level: 1
         graph-icon: host
@@ -157,8 +157,8 @@ topology:
         - bash /mnt/HOST-B.cfg
       binds:
         - config/HOST-B.cfg:/mnt/HOST-B.cfg
-        - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
-        - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
+        - ../hawkwing/hawkwing:/hawkwing
+        - ../hawkwing/config.yaml:/config.yaml
       labels:
         graph-level: 10
         graph-icon: host
@@ -171,8 +171,8 @@ topology:
         - bash /mnt/HOST-C.cfg
       binds:
         - config/HOST-C.cfg:/mnt/HOST-C.cfg
-        - /home/ins/hawkv6/hawk-wing/hawkwing:/hawkwing
-        - /home/ins/hawkv6/hawk-wing/config.yaml:/config.yaml
+        - ../hawkwing/hawkwing:/hawkwing
+        - ../hawkwing/config.yaml:/config.yaml
       labels:
         graph-level: 10
         graph-icon: host
@@ -194,7 +194,7 @@ topology:
         - bash /mnt/HAWK-EYE.cfg
       binds:
         - config/HAWK-EYE.cfg:/mnt/HAWK-EYE.cfg
-        - /home/ins/hawkv6/hawkeye/bin/hawkeye:/hawkeye
+        - ../hawkeye/bin/hawkeye:/hawkeye
 
     SERA-1:
       kind: linux
