@@ -1,6 +1,21 @@
 ### Overview
-This lab uses containerlab to spin up the hawkv6 test network containing XRd control-plane devices and docker [network-ninja container](https://github.com/INSRapperswil/network-ninja) and [network-consul-ninja container](https://github.com/hawkv6/network-consul-ninja/pkgs/container/network-consul-ninja).
+This lab uses containerlab to spin up the hawkv6 test network containing XRd control-plane devices and docker [network-ninja container](https://github.com/INSRapperswil/network-ninja) and [network-consul-ninja container](https://github.com/hawkv6/network-consul-ninja).
 ![hawkv6 network topology](images/hawkv6-network.png)
+
+
+#### Additional Information
+
+- The network uses full SIDs because the hawkwing and hawkeye applications do not support compressed SIDs yet
+- The services SERA1, SERA2, SNORT1, SNORT2 are running in host-mode
+  - They're running a consul agent with an IP address of the host
+  - The consul agent connects to a consul server running on an external K8s cluster (more info [deployment](https://github.com/hawkv6/deployment/tree/poc-deployment))
+  - The services are configured with an `ip route` command to be SR-aware
+  - Look at the configuration in the `config` folder
+- Each XRd router sends telemetry data in the direction of a Jalapeno Telegraf
+- XR-4 has a BGP session with XR-5 and sends BMP data in the direction of Jalapeno goBMP
+- The hosts HOST-A, HOST-B, and HOST-C bind the [hawkwing](https://github.com/hawkv6/hawkwing) application and config from a local path `../hawkwing`
+- The host HAWK-EYE binds the [hawkeye](https://github.com/hawkv6/hawkeye) application from a local path `../hawkeye`
+- The scripts `config/set-lab-impairments.sh` and `remove-lab-impairments.sh` use [clab-telemetry-linker](https://github.com/hawkv6/clab-telemetry-linker) to set respectively remove impairments in the lab.
 
 
 ### Deploy
