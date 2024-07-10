@@ -8,7 +8,7 @@ This lab uses containerlab to spin up the hawkv6 test network containing XRd con
 - The network uses full SIDs because the hawkwing and hawkeye applications do not support compressed SIDs yet
 - The services SERA1, SERA2, SNORT1, SNORT2 are running in host-mode
   - They're running a consul agent with an IP address of the host
-  - The consul agent connects to a consul server running on an external K8s cluster (more info [deployment](https://github.com/hawkv6/deployment/tree/poc-deployment))
+  - The consul agent connects to a consul server running on an external K8s cluster (more info [deployment](https://github.com/hawkv6/deployment))
   - The services are configured with an `ip route` command to be SR-aware
   - Look at the configuration in the `config` folder
 - Each XRd router sends telemetry data in the direction of a Jalapeno Telegraf
