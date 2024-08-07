@@ -1,13 +1,5 @@
 # HawkV6 Test Network
 
-- [HawkV6 Test Network](#hawkv6-test-network)
-  - [Overview](#overview)
-  - [Deploy](#deploy)
-  - [Destroy](#destroy)
-  - [Connect to Host](#connect-to-host)
-  - [Remote capture](#remote-capture)
-  - [Additional Information](#additional-information)
-
 ## Overview
 
 This lab uses Containerlab to spin up the HawkV6 test network containing XRd control-plane devices and Docker containers:
