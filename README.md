@@ -1,8 +1,6 @@
 # HawkV6 Test Network
 
-## Table of Contens
 - [HawkV6 Test Network](#hawkv6-test-network)
-  - [Table of Contens](#table-of-contens)
   - [Overview](#overview)
   - [Deploy](#deploy)
   - [Destroy](#destroy)

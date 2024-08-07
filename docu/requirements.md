@@ -1,15 +1,25 @@
-### Requirements
+# Requirements and Installation
+
+- [Requirements and Installation](#requirements-and-installation)
+  - [Requirements](#requirements)
+    - [Versions](#versions)
+  - [Installation](#installation)
+
+## Requirements
 
 The following are required to run the network:
 - Docker
 - Docker Compose
 - Containerlab
 
+### Versions 
 The lab was tested with the following versions:
 - XRd control-plane version 7.11.1
 - Containerlab 0.48.6
 - Docker 24.0.7
 - Docker Compose v2.11.1
+
+## Installation 
 
 Follow these instructions to install the requirements on an Ubuntu 22.04 LTS system:
 

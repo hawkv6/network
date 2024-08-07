@@ -1,5 +1,12 @@
 # Impairments
 
+- [Impairments](#impairments)
+  - [Overview](#overview)
+  - [Delay](#delay)
+  - [Packet Loss](#packet-loss)
+  - [Bandwidth](#bandwidth)
+
+## Overview
 The following impairments are set when the `config/set-lab-impairments.sh` script is applied.
 
 ## Delay

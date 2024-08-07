@@ -1,8 +1,6 @@
 # Network Documentation
 
-## Table of Contents
 - [Network Documentation](#network-documentation)
-  - [Table of Contents](#table-of-contents)
   - [L3 Information](#l3-information)
   - [Topology Information](#topology-information)
   - [Additional Information](#additional-information)
