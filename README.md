@@ -1,114 +1,52 @@
-### Overview
-This lab uses containerlab to spin up the hawkv6 test network containing XRd control-plane devices and docker [network-ninja container](https://github.com/INSRapperswil/network-ninja) and [network-consul-ninja container](https://github.com/hawkv6/network-consul-ninja).
-![hawkv6 network topology](images/hawkv6-network.png)
+# HawkV6 Test Network
+
+- [HawkV6 Test Network](#hawkv6-test-network)
+  - [Overview](#overview)
+  - [Deploy](#deploy)
+  - [Destroy](#destroy)
+  - [Connect to Host](#connect-to-host)
+  - [Remote capture](#remote-capture)
+  - [Additional Information](#additional-information)
+
+## Overview
+
+This lab uses Containerlab to spin up the HawkV6 test network containing XRd control-plane devices and Docker containers:
+- [network-ninja container](https://github.com/INSRapperswil/network-ninja)
+- [network-consul-ninja container](https://github.com/hawkv6/network-consul-ninja)
+
+![HawkV6 Network Overview](images/hawkv6-network-overview.drawio.svg)
 
 
-#### Additional Information
-
-- The network uses full SIDs because the [hawkwing](https://github.com/hawkv6/hawkwing) and [hawkeye](https://github.com/hawkv6/hawkeye) applications do not support compressed SIDs yet
-- The services SERA1, SERA2, SNORT1, SNORT2 are running in host-mode
-  - They're running a [consul](https://www.consul.io/) agent with an IP address of the host
-  - The consul agent connects to a consul server running on an external K8s cluster (more info [deployment](https://github.com/hawkv6/deployment))
-  - The services are configured with an `ip route` command to be SR-aware
-  - Look at the configuration in the `config` folder
-- Each XRd router sends telemetry data in the direction of a [Jalapeno](https://github.com/cisco-open/jalapeno) Telegraf
-- XR-4 has a BGP session with XR-5 and sends BMP data in the direction of Jalapeno goBMP
-- The hosts HOST-A, HOST-B, and HOST-C bind the [hawkwing](https://github.com/hawkv6/hawkwing) application and config from a local path `../hawkwing`
-- The host HAWK-EYE binds the [hawkeye](https://github.com/hawkv6/hawkeye) application from a local path `../hawkeye`
-- The scripts `config/set-lab-impairments.sh` and `remove-lab-impairments.sh` use [clab-telemetry-linker](https://github.com/hawkv6/clab-telemetry-linker) to set respectively remove impairments in the lab.
-
-
-### Deploy
+## Deploy
 Deploy the lab with the following command:
 ```
 sudo containerlab deploy -t clab-hawkv6-network.yml
 ```
 
-### Destroy
+## Destroy
 Destroy the lab with the following command:
 ```
 sudo containerlab destroy -t clab-hawkv6-network.yml
 ```
 
-### Connect to host
+## Connect to Host
+You can connect to the hosts using the following commands:
 ```
 docker exec -it clab-hawkv6-HOST-A bash
 docker exec -it clab-hawkv6-XR-1 /pkg/bin/xr_cli.sh
 ```
 
-### Requirements
-The following things are needed to run the network:
-- docker
-- docker-compose
-- containerlab
-
-The lab was tested with the following versions:
-- XRd control-plane version 7.11.1 
-- containerlab 0.48.6
-- Docker 24.0.7
-- Docker Compose version v2.11.1
-
-Follow these instructions to install the requirements.
-These steps were done on a Ubuntu 22.04 LTS system:
-1. [Install and configure docker](https://docs.docker.com/engine/install/ubuntu/)
-2. [Install docker-compose](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04)
-3. Install containerlab:
-    ```
-    ### download and install the latest release (may require sudo)
-    bash -c "$(curl -sL https://get.containerlab.dev)"
-    ```
-4. Add the necessary option to sysctl and verify it:
-   ```
-   echo 'kernel.pid_max = 1048575' | sudo tee -a /etc/sysctl.conf
-   echo 'fs.inotify.max_user_instances=64000' | sudo tee -a /etc/sysctl.conf
-   sudo sysctl -p
-   ```
-5. Extract tarball:
-   ```
-   tar -xvzf xrd-control-plane-container-x86.7.11.1.tgz
-   ```
-6. Load the XRd image into docker :
-   ```
-   docker load -i xrd-control-plane-container-x64.dockerv1.tgz-7.11.1
-   ```
-
-
-### Remote capture
+## Remote capture
 Containerlab has excellent documentation about [using (remote) capture](https://containerlab.dev/manual/wireshark/).
 
 You can either use the standard option:
 ```
 ssh user@containerlab-host "sudo ip netns exec hawk9-XR-1 tcpdump -U -nni Gi0-0-0-0 -w -" | wireshark -k -i -
 ```
-or read further about `clabshark`
 
-#### clabshark 
+or read further about [clabshark](docu/clabshark.md)
 
-To capture remote traffic, I wrote the following little bash function:
-```
-### start wireshark and listening on a containerlab device
-function clabshark {
-    if [ $### -ne 3 ]; then
-      echo "Usage: clabshark <username@containerlab_address> <container_name> <interface_name>"
-      return
-    fi
-    ssh $1 "sudo ip netns exec $2 tcpdump -U -nni $3 -w -" | wireshark -k -i -
-}
-```
+## Additional Information
+- More detailed information about the network can be found in [network documentation](docu/network.md)
+- More detailed information about the installation and requirements can be found in [requirements](docu/requirements.md)
 
-I suggest adding it to the `.bashrc` file or including it into your own `.bash_functions` file and including this code in your `.bashrc`:
-Don't forget to reload your `.bashrc` with the command `source .bashrc`.
-
-```
-### Load bash_functions when starting bash shell
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
-```
-Don't forget to reload your `.bashrc` with the command `source .bashrc`.
-
-After activating it, you can use it easily.
-Here is an example of sniffing on XR-1 GigabitEthernet0/0/0/0:
-```
-clabshark user@clab-server clab-hawkv6-XR-1 Gi0-0-0-0
-```
