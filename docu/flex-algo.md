@@ -1,5 +1,4 @@
 # Flexible Algorithms (FlexAlgos)
-
 This document provides an overview of the Flexible Algorithms (FlexAlgo) applied in the HawkV6 test network.
 
 ## FlexAlgo 128

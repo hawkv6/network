@@ -1,12 +1,6 @@
 # Requirements and Installation
 
-- [Requirements and Installation](#requirements-and-installation)
-  - [Requirements](#requirements)
-    - [Versions](#versions)
-  - [Installation](#installation)
-
 ## Requirements
-
 The following are required to run the network:
 - Docker
 - Docker Compose
@@ -20,7 +14,6 @@ The lab was tested with the following versions:
 - Docker Compose v2.11.1
 
 ## Installation 
-
 Follow these instructions to install the requirements on an Ubuntu 22.04 LTS system:
 
 1. [Install and configure Docker](https://docs.docker.com/engine/install/ubuntu/).
