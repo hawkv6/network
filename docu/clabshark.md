@@ -1,4 +1,4 @@
-### clabshark 
+# clabshark 
 
 I wrote the following little bash function to simplify remote capture:
 ```
@@ -11,12 +11,12 @@ function clabshark {
     ssh $1 "sudo ip netns exec $2 tcpdump -U -nni $3 -w -" | wireshark -k -i -
 }
 ```
-#### Usage
+## Usage
 Here is an example of sniffing on XR-1 GigabitEthernet0/0/0/0:
 ```
 clabshark user@clab-server clab-hawkv6-XR-1 Gi0-0-0-0
 ```
-#### Adding to `.bashrc`
+## Adding to `.bashrc`
 I suggest adding it to the `.bashrc` file or including it into your own `.bash_functions` file and including this code in your `.bashrc`:
 Don't forget to reload your `.bashrc` with the command `source .bashrc`.
 

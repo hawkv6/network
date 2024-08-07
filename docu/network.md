@@ -1,5 +1,23 @@
 # Network Documentation
 
+## Table of Contents
+- [Network Documentation](#network-documentation)
+  - [Table of Contents](#table-of-contents)
+  - [L3 Information](#l3-information)
+  - [Topology Information](#topology-information)
+  - [Additional Information](#additional-information)
+    - [Full SIDs Usage](#full-sids-usage)
+    - [SRv6 SID Structure](#srv6-sid-structure)
+    - [SR-Aware Firewalls](#sr-aware-firewalls)
+    - [Snort Instances](#snort-instances)
+    - [Host IP Addresses](#host-ip-addresses)
+    - [Configuration Files](#configuration-files)
+    - [Service Configuration](#service-configuration)
+    - [Telemetry and BMP Data](#telemetry-and-bmp-data)
+    - [Application Bindings](#application-bindings)
+    - [Lab Impairments Scripts](#lab-impairments-scripts)
+    - [Flexible Algorithms](#flexible-algorithms)
+
 ## L3 Information
 
 The network configuration is detailed in the diagram below, showing IP addresses and interfaces.

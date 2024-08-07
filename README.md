@@ -1,5 +1,15 @@
 # HawkV6 Test Network
 
+## Table of Contens
+- [HawkV6 Test Network](#hawkv6-test-network)
+  - [Table of Contens](#table-of-contens)
+  - [Overview](#overview)
+  - [Deploy](#deploy)
+  - [Destroy](#destroy)
+  - [Connect to Host](#connect-to-host)
+  - [Remote capture](#remote-capture)
+  - [Additional Information](#additional-information)
+
 ## Overview
 
 This lab uses Containerlab to spin up the HawkV6 test network containing XRd control-plane devices and Docker containers:
@@ -28,7 +38,7 @@ docker exec -it clab-hawkv6-HOST-A bash
 docker exec -it clab-hawkv6-XR-1 /pkg/bin/xr_cli.sh
 ```
 
-### Remote capture
+## Remote capture
 Containerlab has excellent documentation about [using (remote) capture](https://containerlab.dev/manual/wireshark/).
 
 You can either use the standard option:
@@ -38,7 +48,7 @@ ssh user@containerlab-host "sudo ip netns exec hawk9-XR-1 tcpdump -U -nni Gi0-0-
 
 or read further about [clabshark](docu/clabshark.md)
 
-### Additional Information
+## Additional Information
 - More detailed information about the network can be found in [network documentation](docu/network.md)
 - More detailed information about the installation and requirements can be found in [requirements](docu/requirements.md)
 
