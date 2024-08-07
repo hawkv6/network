@@ -1,6 +1,6 @@
 ### Overview
 This lab uses containerlab to spin up the hawkv6 test network containing XRd control-plane devices and docker [network-ninja container](https://github.com/INSRapperswil/network-ninja) and [network-consul-ninja container](https://github.com/hawkv6/network-consul-ninja).
-![hawkv6 network topology](images/hawkv6-network.svg)
+![hawkv6 network topology](images/hawkv6-network-overview.drawio.svg)
 
 
 #### Additional Information
