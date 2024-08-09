@@ -3,12 +3,12 @@
 ## L3 Information
 The network configuration is detailed in the diagram below, showing IP addresses and interfaces.
 
-![L3 Network Diagram](../images/hawkv6-network-l3.drawio.svg)
+![L3 Network Diagram](images/hawkv6-network-l3.drawio.svg)
 
 ## Topology Information
 The physical connections and interfaces of the network are illustrated in the topology diagram below.
 
-![L2 Network Diagram](../images/hawkv6-network-l2.drawio.svg)
+![L2 Network Diagram](images/hawkv6-network-l2.drawio.svg)
 
 ## Additional Information
 
