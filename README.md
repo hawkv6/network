@@ -6,7 +6,7 @@ This lab uses Containerlab to spin up the HawkV6 test network containing XRd con
 - [network-ninja container](https://github.com/INSRapperswil/network-ninja)
 - [network-consul-ninja container](https://github.com/hawkv6/network-consul-ninja)
 
-![HawkV6 Network Overview](docu/images/hawkv6-network-overview.drawio.svg)
+![HawkV6 Network Overview](docs/images/hawkv6-network-overview.drawio.svg)
 
 
 ## Deploy
@@ -36,9 +36,9 @@ You can either use the standard option:
 ssh user@containerlab-host "sudo ip netns exec hawk9-XR-1 tcpdump -U -nni Gi0-0-0-0 -w -" | wireshark -k -i -
 ```
 
-or read further about [clabshark](docu/clabshark.md)
+or read further about [clabshark](docs/clabshark.md)
 
 ## Additional Information
-- More detailed information about the network can be found in [network documentation](docu/network.md)
-- More detailed information about the installation and requirements can be found in [requirements](docu/requirements.md)
+- More detailed information about the network can be found in [network documentation](docs/network.md)
+- More detailed information about the installation and requirements can be found in [requirements](docs/requirements.md)
 
