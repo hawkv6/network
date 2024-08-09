@@ -6,7 +6,7 @@ This lab uses Containerlab to spin up the HawkV6 test network containing XRd con
 - [network-ninja container](https://github.com/INSRapperswil/network-ninja)
 - [network-consul-ninja container](https://github.com/hawkv6/network-consul-ninja)
 
-![HawkV6 Network Overview](images/hawkv6-network-overview.drawio.svg)
+![HawkV6 Network Overview](docu/images/hawkv6-network-overview.drawio.svg)
 
 
 ## Deploy
