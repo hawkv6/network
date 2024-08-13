@@ -1,10 +1,10 @@
 sudo clab-telemetry-linker set -n XR-1 -i Gi0-0-0-1 -d 4 
-sudo clab-telemetry-linker set -n XR-1 -i Gi0-0-0-2 -d 6 -l 3
+sudo clab-telemetry-linker set -n XR-1 -i Gi0-0-0-2 -d 6 -l 3 -r 100000
 sudo clab-telemetry-linker set -n XR-2 -i Gi0-0-0-0 -d 3
 sudo clab-telemetry-linker set -n XR-2 -i Gi0-0-0-1 -d 8 
 sudo clab-telemetry-linker set -n XR-3 -i Gi0-0-0-0 -d 5 -l 3
 sudo clab-telemetry-linker set -n XR-3 -i Gi0-0-0-3 -d 8 
-sudo clab-telemetry-linker set -n XR-5 -i Gi0-0-0-1 -l 2
+sudo clab-telemetry-linker set -n XR-5 -i Gi0-0-0-1 -l 2 -r 100000
 sudo clab-telemetry-linker set -n XR-5 -i Gi0-0-0-2 -l 2
 sudo clab-telemetry-linker set -n XR-6 -i Gi0-0-0-2 -l 2 -r 10000
 sudo clab-telemetry-linker set -n XR-6 -i Gi0-0-0-0 -d 8 
