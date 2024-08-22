@@ -31,6 +31,7 @@ name: hawkv6
 mgmt:
   network: mgt_net
   ipv4-subnet: 172.20.1.0/24
+  ipv6-subnet: 2001:172:20:1::/64
 
 topology:
   nodes:
@@ -39,6 +40,7 @@ topology:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.11
+      mgmt-ipv6: 2001:172:20:1::11
       startup-config: config/XR-1.cfg
       labels:
         graph-level: 3
@@ -48,6 +50,7 @@ topology:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.12
+      mgmt-ipv6: 2001:172:20:1::12
       startup-config: config/XR-2.cfg
       labels:
         graph-level: 4
@@ -57,6 +60,7 @@ topology:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.13
+      mgmt-ipv6: 2001:172:20:1::13
       startup-config: config/XR-3.cfg
       labels:
         graph-level: 4
@@ -66,6 +70,7 @@ topology:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.14
+      mgmt-ipv6: 2001:172:20:1::14
       startup-config: config/XR-4.cfg
       labels:
         graph-level: 5
@@ -75,6 +80,7 @@ topology:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.15
+      mgmt-ipv6: 2001:172:20:1::15
       startup-config: config/XR-5.cfg
       labels:
         graph-level: 6
@@ -84,6 +90,7 @@ topology:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.16
+      mgmt-ipv6: 2001:172:20:1::16
       startup-config: config/XR-6.cfg
       labels:
         graph-level: 7
@@ -93,6 +100,7 @@ topology:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.17
+      mgmt-ipv6: 2001:172:20:1::17
       startup-config: config/XR-7.cfg
       labels:
         graph-level: 7
@@ -103,6 +111,7 @@ topology:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.18
+      mgmt-ipv6: 2001:172:20:1::18
       startup-config: config/XR-8.cfg
       labels:
         graph-level: 8
@@ -112,6 +121,7 @@ topology:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.20
+      mgmt-ipv6: 2001:172:20:1::20
       startup-config: config/SITE-A.cfg
       labels:
         graph-level: 2
@@ -121,6 +131,7 @@ topology:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.21
+      mgmt-ipv6: 2001:172:20:1::21
       startup-config: config/SITE-B.cfg
       labels:
         graph-level: 9
@@ -130,6 +141,7 @@ topology:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:7.11.1
       mgmt-ipv4: 172.20.1.22
+      mgmt-ipv6: 2001:172:20:1::22
       startup-config: config/SITE-C.cfg
       labels:
         graph-level: 9
@@ -139,6 +151,7 @@ topology:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.30
+      mgmt-ipv6: 2001:172:20:1::30
       exec:
         - bash /mnt/HOST-A.cfg
       binds:
@@ -153,6 +166,7 @@ topology:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.31
+      mgmt-ipv6: 2001:172:20:1::31
       exec:
         - bash /mnt/HOST-B.cfg
       binds:
@@ -167,6 +181,7 @@ topology:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.32
+      mgmt-ipv6: 2001:172:20:1::32
       exec:
         - bash /mnt/HOST-C.cfg
       binds:
@@ -181,6 +196,7 @@ topology:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.40
+      mgmt-ipv6: 2001:172:20:1::40
       exec:
         - bash /mnt/DNS.cfg
       binds:
@@ -190,6 +206,7 @@ topology:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.1.41
+      mgmt-ipv6: 2001:172:20:1::41
       exec:
         - bash /mnt/HAWK-EYE.cfg
       binds:
