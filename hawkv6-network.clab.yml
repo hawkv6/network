@@ -1,30 +1,66 @@
-# This is the lab definition file for the hawkv6 network.
+# This is the lab definition file for the hawkv6 test network.
 # More information: https://github.com/hawkv6/network
 
-#+----+----------------------+--------------+--------------------------------------------+-----------+---------+----------------+--------------+
-#| #  |         Name         | Container ID |                   Image                    |   Kind    |  State  |  IPv4 Address  | IPv6 Address |
-#+----+----------------------+--------------+--------------------------------------------+-----------+---------+----------------+--------------+
-#|  1 | clab-hawkv6-DNS      | a815dbc42a9f | ghcr.io/insrapperswil/network-ninja:1.0    | linux     | running | 172.20.20.40/24 | N/A          |
-#|  2 | clab-hawkv6-HAWK-EYE | 4fc5e0823088 | ghcr.io/insrapperswil/network-ninja:1.0    | linux     | running | 172.20.20.41/24 | N/A          |
-#|  3 | clab-hawkv6-HOST-A   | b64d74e680a6 | ghcr.io/insrapperswil/network-ninja:1.0    | linux     | running | 172.20.20.30/24 | N/A          |
-#|  4 | clab-hawkv6-HOST-B   | 6683aa247a03 | ghcr.io/insrapperswil/network-ninja:1.0    | linux     | running | 172.20.20.31/24 | N/A          |
-#|  5 | clab-hawkv6-HOST-C   | fc2905656b54 | ghcr.io/insrapperswil/network-ninja:1.0    | linux     | running | 172.20.20.32/24 | N/A          |
-#|  6 | clab-hawkv6-SERA-1   | b350875c8c14 | ghcr.io/hawkv6/network-consul-ninja:latest | linux     | running | N/A            | N/A          |
-#|  7 | clab-hawkv6-SERA-2   | c9c75982d483 | ghcr.io/hawkv6/network-consul-ninja:latest | linux     | running | N/A            | N/A          |
-#|  8 | clab-hawkv6-SITE-A   | 9b44c4f14570 | ios-xr/xrd-control-plane:7.11.2            | cisco_xrd | running | 172.20.20.20/24 | N/A          |
-#|  9 | clab-hawkv6-SITE-B   | b6f6498fb21d | ios-xr/xrd-control-plane:7.11.2            | cisco_xrd | running | 172.20.20.21/24 | N/A          |
-#| 10 | clab-hawkv6-SITE-C   | 30c127079801 | ios-xr/xrd-control-plane:7.11.2            | cisco_xrd | running | 172.20.20.22/24 | N/A          |
-#| 11 | clab-hawkv6-SNORT-1  | 32ecf8c809a7 | ghcr.io/hawkv6/network-consul-ninja:latest | linux     | running | N/A            | N/A          |
-#| 12 | clab-hawkv6-SNORT-2  | 2fac07c1c1d2 | ghcr.io/hawkv6/network-consul-ninja:latest | linux     | running | N/A            | N/A          |
-#| 13 | clab-hawkv6-XR-1     | 3fc4a5a3086f | ios-xr/xrd-control-plane:7.11.2            | cisco_xrd | running | 172.20.20.11/24 | N/A          |
-#| 14 | clab-hawkv6-XR-2     | 2e380840b37a | ios-xr/xrd-control-plane:7.11.2            | cisco_xrd | running | 172.20.20.12/24 | N/A          |
-#| 15 | clab-hawkv6-XR-3     | c56c982f2053 | ios-xr/xrd-control-plane:7.11.2            | cisco_xrd | running | 172.20.20.13/24 | N/A          |
-#| 16 | clab-hawkv6-XR-4     | 9c1271aa2232 | ios-xr/xrd-control-plane:7.11.2            | cisco_xrd | running | 172.20.20.14/24 | N/A          |
-#| 17 | clab-hawkv6-XR-5     | 5152dc7daa43 | ios-xr/xrd-control-plane:7.11.2            | cisco_xrd | running | 172.20.20.15/24 | N/A          |
-#| 18 | clab-hawkv6-XR-6     | 156c7c334a64 | ios-xr/xrd-control-plane:7.11.2            | cisco_xrd | running | 172.20.20.16/24 | N/A          |
-#| 19 | clab-hawkv6-XR-7     | 141dcbcfe28d | ios-xr/xrd-control-plane:7.11.2            | cisco_xrd | running | 172.20.20.17/24 | N/A          |
-#| 20 | clab-hawkv6-XR-8     | d78343cbc93f | ios-xr/xrd-control-plane:7.11.2            | cisco_xrd | running | 172.20.20.18/24 | N/A          |
-#+----+----------------------+--------------+--------------------------------------------+-----------+---------+----------------+--------------+
+# ╭──────────────────────┬────────────────────────────────────────────┬─────────┬─────────────────────╮
+# │         Name         │                 Kind/Image                 │  State  │    IPv4/6 Address   │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-HAWK-EYE │ linux                                      │ running │ 172.20.20.41        │
+# │                      │ ghcr.io/insrapperswil/network-ninja:1.0    │         │ 3fff:172:20:20:41:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-HOST-A   │ linux                                      │ running │ 172.20.20.30        │
+# │                      │ ghcr.io/insrapperswil/network-ninja:1.0    │         │ 3fff:172:20:20:30:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-HOST-B   │ linux                                      │ running │ 172.20.20.31        │
+# │                      │ ghcr.io/insrapperswil/network-ninja:1.0    │         │ 3fff:172:20:20:31:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-HOST-C   │ linux                                      │ running │ 172.20.20.32        │
+# │                      │ ghcr.io/insrapperswil/network-ninja:1.0    │         │ 3fff:172:20:20:32:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-SERA-1   │ linux                                      │ running │ 172.20.20.42        │
+# │                      │ ghcr.io/hawkv6/network-consul-ninja:latest │         │ 3fff:172:20:20:42:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-SERA-2   │ linux                                      │ running │ 172.20.20.43        │
+# │                      │ ghcr.io/hawkv6/network-consul-ninja:latest │         │ 3fff:172:20:20:43:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-SITE-A   │ cisco_xrd                                  │ running │ 172.20.20.20        │
+# │                      │ ios-xr/xrd-control-plane:25.3.1            │         │ 3fff:172:20:20:20:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-SITE-B   │ cisco_xrd                                  │ running │ 172.20.20.21        │
+# │                      │ ios-xr/xrd-control-plane:25.3.1            │         │ 3fff:172:20:20:21:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-SITE-C   │ cisco_xrd                                  │ running │ 172.20.20.22        │
+# │                      │ ios-xr/xrd-control-plane:25.3.1            │         │ 3fff:172:20:20:22:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-SNORT-1  │ linux                                      │ running │ 172.20.20.44        │
+# │                      │ ghcr.io/hawkv6/network-consul-ninja:latest │         │ 3fff:172:20:20:44:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-SNORT-2  │ linux                                      │ running │ 172.20.20.45        │
+# │                      │ ghcr.io/hawkv6/network-consul-ninja:latest │         │ 3fff:172:20:20:45:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-XR-1     │ cisco_xrd                                  │ running │ 172.20.20.11        │
+# │                      │ ios-xr/xrd-control-plane:25.3.1            │         │ 3fff:172:20:20:11:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-XR-2     │ cisco_xrd                                  │ running │ 172.20.20.12        │
+# │                      │ ios-xr/xrd-control-plane:25.3.1            │         │ 3fff:172:20:20:12:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-XR-3     │ cisco_xrd                                  │ running │ 172.20.20.13        │
+# │                      │ ios-xr/xrd-control-plane:25.3.1            │         │ 3fff:172:20:20:13:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-XR-4     │ cisco_xrd                                  │ running │ 172.20.20.14        │
+# │                      │ ios-xr/xrd-control-plane:25.3.1            │         │ 3fff:172:20:20:14:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-XR-5     │ cisco_xrd                                  │ running │ 172.20.20.15        │
+# │                      │ ios-xr/xrd-control-plane:25.3.1            │         │ 3fff:172:20:20:15:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-XR-6     │ cisco_xrd                                  │ running │ 172.20.20.16        │
+# │                      │ ios-xr/xrd-control-plane:25.3.1            │         │ 3fff:172:20:20:16:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-XR-7     │ cisco_xrd                                  │ running │ 172.20.20.17        │
+# │                      │ ios-xr/xrd-control-plane:25.3.1            │         │ 3fff:172:20:20:17:: │
+# ├──────────────────────┼────────────────────────────────────────────┼─────────┼─────────────────────┤
+# │ clab-hawkv6-XR-8     │ cisco_xrd                                  │ running │ 172.20.20.18        │
+# │                      │ ios-xr/xrd-control-plane:25.3.1            │         │ 3fff:172:20:20:18:: │
+# ╰──────────────────────┴────────────────────────────────────────────┴─────────┴─────────────────────╯
 
 name: hawkv6
 
@@ -36,8 +72,9 @@ topology:
 
     XR-1:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.2
+      image: ios-xr/xrd-control-plane:25.3.1
       mgmt-ipv4: 172.20.20.11
+      mgmt-ipv6: "3fff:172:20:20::11"
       startup-config: config/XR-1.cfg
       labels:
         graph-level: 3
@@ -45,8 +82,9 @@ topology:
 
     XR-2:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.2
+      image: ios-xr/xrd-control-plane:25.3.1
       mgmt-ipv4: 172.20.20.12
+      mgmt-ipv6: "3fff:172:20:20::12"
       startup-config: config/XR-2.cfg
       labels:
         graph-level: 4
@@ -54,8 +92,9 @@ topology:
 
     XR-3:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.2
+      image: ios-xr/xrd-control-plane:25.3.1
       mgmt-ipv4: 172.20.20.13
+      mgmt-ipv6: "3fff:172:20:20::13"
       startup-config: config/XR-3.cfg
       labels:
         graph-level: 4
@@ -63,8 +102,9 @@ topology:
 
     XR-4:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.2
+      image: ios-xr/xrd-control-plane:25.3.1
       mgmt-ipv4: 172.20.20.14
+      mgmt-ipv6: "3fff:172:20:20::14"
       startup-config: config/XR-4.cfg
       labels:
         graph-level: 5
@@ -72,8 +112,9 @@ topology:
 
     XR-5:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.2
+      image: ios-xr/xrd-control-plane:25.3.1
       mgmt-ipv4: 172.20.20.15
+      mgmt-ipv6: "3fff:172:20:20::15"
       startup-config: config/XR-5.cfg
       labels:
         graph-level: 6
@@ -81,8 +122,9 @@ topology:
     
     XR-6:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.2
+      image: ios-xr/xrd-control-plane:25.3.1
       mgmt-ipv4: 172.20.20.16
+      mgmt-ipv6: "3fff:172:20:20::16"
       startup-config: config/XR-6.cfg
       labels:
         graph-level: 7
@@ -90,8 +132,9 @@ topology:
 
     XR-7:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.2
+      image: ios-xr/xrd-control-plane:25.3.1
       mgmt-ipv4: 172.20.20.17
+      mgmt-ipv6: "3fff:172:20:20::17"
       startup-config: config/XR-7.cfg
       labels:
         graph-level: 7
@@ -100,8 +143,9 @@ topology:
 
     XR-8:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.2
+      image: ios-xr/xrd-control-plane:25.3.1
       mgmt-ipv4: 172.20.20.18
+      mgmt-ipv6: "3fff:172:20:20::18"
       startup-config: config/XR-8.cfg
       labels:
         graph-level: 8
@@ -109,8 +153,9 @@ topology:
 
     SITE-A:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.2
+      image: ios-xr/xrd-control-plane:25.3.1
       mgmt-ipv4: 172.20.20.20
+      mgmt-ipv6: "3fff:172:20:20::20"
       startup-config: config/SITE-A.cfg
       labels:
         graph-level: 2
@@ -118,8 +163,9 @@ topology:
 
     SITE-B:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.2
+      image: ios-xr/xrd-control-plane:25.3.1
       mgmt-ipv4: 172.20.20.21
+      mgmt-ipv6: "3fff:172:20:20::21"
       startup-config: config/SITE-B.cfg
       labels:
         graph-level: 9
@@ -127,8 +173,9 @@ topology:
 
     SITE-C:
       kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:7.11.2
+      image: ios-xr/xrd-control-plane:25.3.1
       mgmt-ipv4: 172.20.20.22
+      mgmt-ipv6: "3fff:172:20:20::22"
       startup-config: config/SITE-C.cfg
       labels:
         graph-level: 9
@@ -138,7 +185,7 @@ topology:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.20.30
-      mgmt-ipv6: "3fff:172.20.20.20::"
+      mgmt-ipv6: "3fff:172:20:20::30"
       exec:
         - bash /mnt/HOST-A.cfg
       binds:
@@ -153,7 +200,7 @@ topology:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.20.31
-      mgmt-ipv6: "3fff:172.20.20.31::"
+      mgmt-ipv6: "3fff:172:20:20::31"
       exec:
         - bash /mnt/HOST-B.cfg
       binds:
@@ -168,7 +215,7 @@ topology:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.20.32
-      mgmt-ipv6: "3fff:172.20.20.32::"
+      mgmt-ipv6: "3fff:172:20:20::32"
       exec:
         - bash /mnt/HOST-C.cfg
       binds:
@@ -179,20 +226,11 @@ topology:
         graph-level: 10
         graph-icon: host
 
-    DNS:
-      kind: linux
-      image: ghcr.io/insrapperswil/network-ninja:1.0
-      mgmt-ipv4: 172.20.20.40
-      exec:
-        - bash /mnt/DNS.cfg
-      binds:
-        - config/DNS.cfg:/mnt/DNS.cfg
-
     HAWK-EYE:
       kind: linux
       image: ghcr.io/insrapperswil/network-ninja:1.0
       mgmt-ipv4: 172.20.20.41
-      mgmt-ipv6: "3fff:172.20.20.41::"
+      mgmt-ipv6: "3fff:172:20:20::41"
       exec:
         - bash /mnt/HAWK-EYE.cfg
       binds:
@@ -203,6 +241,7 @@ topology:
       kind: linux
       image:  ghcr.io/hawkv6/network-consul-ninja:latest
       mgmt-ipv4: 172.20.20.42
+      mgmt-ipv6: "3fff:172:20:20::42"
       exec:
         - bash /mnt/SERA-1.cfg
       binds:
@@ -212,6 +251,7 @@ topology:
       kind: linux
       image:  ghcr.io/hawkv6/network-consul-ninja:latest
       mgmt-ipv4: 172.20.20.43
+      mgmt-ipv6: "3fff:172:20:20::43"
       exec:
         - bash /mnt/SERA-2.cfg
       binds:
@@ -221,6 +261,7 @@ topology:
       kind: linux
       image:  ghcr.io/hawkv6/network-consul-ninja:latest
       mgmt-ipv4: 172.20.20.44
+      mgmt-ipv6: "3fff:172:20:20::44"
       exec:
         - bash /mnt/SNORT-1.cfg
       binds:
@@ -230,6 +271,7 @@ topology:
       kind: linux
       image:  ghcr.io/hawkv6/network-consul-ninja:latest
       mgmt-ipv4: 172.20.20.45
+      mgmt-ipv6: "3fff:172:20:20::45"
       exec:
         - bash /mnt/SNORT-2.cfg
       binds:
@@ -246,19 +288,17 @@ topology:
     - endpoints: ["XR-2:Gi0-0-0-4", "SERA-1:eth1"]
     - endpoints: ["XR-3:Gi0-0-0-2", "XR-4:Gi0-0-0-1"]
     - endpoints: ["XR-3:Gi0-0-0-3", "XR-7:Gi0-0-0-0"]
-    - endpoints: ["XR-3:Gi0-0-0-4", "SERA-2:eth2"]
+    - endpoints: ["XR-3:Gi0-0-0-4", "SERA-2:eth1"]
     - endpoints: ["XR-4:Gi0-0-0-2", "XR-5:Gi0-0-0-0"]
-    - endpoints: ["XR-4:Gi0-0-0-3", "DNS:eth1"]
     - endpoints: ["XR-5:Gi0-0-0-1", "XR-6:Gi0-0-0-1"]
     - endpoints: ["XR-5:Gi0-0-0-2", "XR-7:Gi0-0-0-1"]
-    - endpoints: ["XR-5:Gi0-0-0-3", "HAWK-EYE:eth1"]
     - endpoints: ["XR-6:Gi0-0-0-2", "XR-7:Gi0-0-0-2"]
     - endpoints: ["XR-6:Gi0-0-0-3", "XR-8:Gi0-0-0-0"]
     - endpoints: ["XR-6:Gi0-0-0-4", "SITE-B:Gi0-0-0-2"]
-    - endpoints: ["XR-6:Gi0-0-0-5", "SNORT-1:eth3"]
+    - endpoints: ["XR-6:Gi0-0-0-5", "SNORT-1:eth1"]
     - endpoints: ["XR-7:Gi0-0-0-3", "XR-8:Gi0-0-0-1"]
     - endpoints: ["XR-7:Gi0-0-0-4", "SITE-C:Gi0-0-0-2"]
-    - endpoints: ["XR-7:Gi0-0-0-5", "SNORT-2:eth4"]
+    - endpoints: ["XR-7:Gi0-0-0-5", "SNORT-2:eth1"]
     - endpoints: ["XR-8:Gi0-0-0-2", "SITE-B:Gi0-0-0-0"]
     - endpoints: ["XR-8:Gi0-0-0-3", "SITE-C:Gi0-0-0-0"]
     - endpoints: ["SITE-B:Gi0-0-0-1", "HOST-B:eth1"]
